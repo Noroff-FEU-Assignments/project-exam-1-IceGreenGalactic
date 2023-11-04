@@ -1,0 +1,93 @@
+body,
+h1,
+h2,
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+header {
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-container h1 {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+.hero-container img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1% 20% 0% 20%;
+}
+
+.button-container button {
+  padding: 10px 2%;
+  font-size: 14px;
+  background-color: rgb(61, 98, 2, 20%);
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.button-container button:hover {
+  text-decoration: underline;
+  background-color: rgb(61, 98, 2, 40%);
+}
+
+.title-text {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.text-container {
+  font-size: 16px;
+  text-align: center;
+  margin: 2% 30% 0% 30%;
+  line-height: 40px;
+}
+
+.dog-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 100px;
+  justify-content: center;
+  margin: 100px auto auto auto;
+}
+
+.dog-info > div > img {
+  max-width: 100%;
+  width: 400px;
+  height: 450px;
+  object-fit: cover;
+  object-position: 20%;
+}
+.dog-info > div {
+  font-size: 18px;
+  text-align: center;
+}
