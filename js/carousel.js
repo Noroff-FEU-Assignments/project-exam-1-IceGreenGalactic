@@ -1,0 +1,1 @@
+import { fetchURL } from "./common.js";

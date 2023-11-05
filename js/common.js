@@ -1,16 +1,16 @@
-const URL = "";
+const URL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts";
 
-export async function fetchURL(URL){
+export async function fetchURL(apiURL){
     try{
-        const response = await fetch (URL);
+        const response = await fetch (apiURL);
         if (!response.ok){
             throw Error ("failed to fetch data");
         }
         const blogList = await response.json();
         return blogList;
     }catch (error){
-        const errorMessage = "An error occorred while fetching data. pleas try again later";
-        displayMessage (errorMessage);
+        console.error = "An error occorred while fetching data. pleas try again later";
+
     }
 }
 
@@ -32,8 +32,8 @@ function setupHero(){
 
 function createButtons(){
     const buttonContainer = document.querySelector (".button-container");
-    const buttonNames =[ "Hjem", "Hundene våre", "Valper", "Utstillinger", "Om Oss", "Kontakt oss"];
-    const buttonLinks =[ "index.HTML", "hundene.HTML", "valper.HTML", "utstillinger.HTML", "omOss.HTML", "kontakt.HTML"];
+    const buttonNames =[ "Home", "Our dogs", "Puppies", "Shows", "About us", "Contact"];
+    const buttonLinks =[ "index.HTML", "dogs.HTML", "puppies.HTML", "shows.HTML", "about.HTML", "contact.HTML"];
 
     buttonNames.forEach((name, index) =>{
         const button = document.createElement("a");
