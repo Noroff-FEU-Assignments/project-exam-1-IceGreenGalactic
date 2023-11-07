@@ -1,6 +1,6 @@
-const URL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts";
+const apiURL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts";
 
-export async function fetchURL(apiURL){
+export async function fetchURL(){
     try{
         const response = await fetch (apiURL);
         if (!response.ok){
@@ -9,7 +9,7 @@ export async function fetchURL(apiURL){
         const blogList = await response.json();
         return blogList;
     }catch (error){
-        console.error = "An error occorred while fetching data. pleas try again later";
+        console.error ("An error occorred while fetching data. pleas try again later");
 
     }
 }
