@@ -1,13 +1,18 @@
+import { showLoader,hideLoader } from "./utils/loader.js";
 const apiURL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts";
 
 export async function fetchURL(){
     try{
+        showLoader();
+        
         const response = await fetch (apiURL);
         if (!response.ok){
             throw Error ("failed to fetch data");
         }
         const blogList = await response.json();
+        hideLoader();
         return blogList;
+        
     }catch (error){
         console.error ("An error occorred while fetching data. pleas try again later");
 

@@ -2,39 +2,61 @@ import { fetchURL } from "./common.js";
 
 let carousel;
 let currentIndex = 0;
+const itemsPerPage = 3;
+let blogList;
 
 document.addEventListener("DOMContentLoaded", async () =>{
     try{
  carousel = document.querySelector(".carousel-container");
 const prevButton = document.querySelector(".prev-button");
 const nextButton = document.querySelector(".next-button");
+const maxLength = 150;
 
+function displayPosts (){
+    carousel.innerHTML = ``;
+    for (let i = currentIndex; i < currentIndex + itemsPerPage && i <blogList.length; i++){
+        const post = blogList[i];
 
-function displayPosts (blogList){
-    blogList.forEach((post) =>{
-        const item = document.createElement ("div");
-        item.className = "carousel-item";
-        item.innerHTML= `<h3>${post.title.rendered}</h3>
-        ${post.content.rendered}`;
-        carousel.appendChild(item);
-    });
+        const bloggElement = document.createElement ("div");
+        bloggElement.className ="blog-element"
+        const title = document.createElement ("h3");
+        title.className = "carousel-title";
+        title.innerHTML= `${post.title.rendered}`
+
+        const text = document.createElement("p");
+        text.className = "carousel-text";
+        text.innerHTML =  shortText(post.excerpt.rendered, maxLength);
+        
+        const img = document.createElement ("img");
+        img.className = "carousel-img";
+        img.setAttribute ("src", post.jetpack_featured_media_url);
+
+     
+        bloggElement.appendChild(img);
+        bloggElement.appendChild(title);
+        bloggElement.appendChild(text);
+        carousel.appendChild(bloggElement);
+    }
 }
-const blogList = await fetchURL();
-displayPosts(blogList);
-updateCarousel();
 
+blogList = await fetchURL();
+displayPosts();
+
+function shortText (text, maxLength) {
+    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+}
 
 prevButton.addEventListener ("click", () =>{
     if (currentIndex > 0){
-        currentIndex --;
-        updateCarousel();
+        currentIndex -= itemsPerPage;
+        displayPosts();
     }
 });
 nextButton.addEventListener("click", () =>{
-    const numItems = carousel.querySelectorAll (".carousel-item").length;
-    if (currentIndex < numItems - 3) {
-        currentIndex++;
-        updateCarousel();
+    const numItems = blogList.length;
+    if (currentIndex + itemsPerPage < numItems ) {
+        currentIndex+= itemsPerPage;
+        displayPosts();
     }
 });
     }catch (error) {
@@ -42,7 +64,3 @@ nextButton.addEventListener("click", () =>{
     }
 });
 
-function updateCarousel(){
-    const itemWidth = carousel.querySelector(".carousel-item").offsetWidth;
-    carousel.style.transform = `translateX(${currentIndex * (itemWidth + 10)}px)`;
-}
