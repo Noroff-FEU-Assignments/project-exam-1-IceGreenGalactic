@@ -10,7 +10,7 @@ export async function fetchURL(){
             throw Error ("failed to fetch data");
         }
         const blogList = await response.json();
-        hideLoader();
+        
         return blogList;
         
     }catch (error){

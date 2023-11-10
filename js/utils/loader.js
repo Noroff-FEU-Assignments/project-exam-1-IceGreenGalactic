@@ -1,8 +1,10 @@
 export function showLoader(){
     const loaderContainer = document.createElement("div");
     loaderContainer.className = "loader-container";
-    const loader = document.createElement("div");
-    loader.className ="loader";
+
+    const loader = document.createElement("i");
+    loader.className = "loader fas fa-bone"
+    
     loaderContainer.appendChild(loader);
     document.body.appendChild(loaderContainer);
 }
