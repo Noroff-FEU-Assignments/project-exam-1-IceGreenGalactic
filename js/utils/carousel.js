@@ -1,5 +1,5 @@
-import { fetchURL } from "./common.js";
-import { createBlogElement } from "./utils/blogList.js";
+import { fetchURL } from "../common.js";
+import { createBlogElement } from "../blogList.js";
 
 let carousel;
 let currentIndex = 0;

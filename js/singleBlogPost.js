@@ -1,4 +1,5 @@
 import { fetchURL } from "./common.js";
+import { createBlogElement } from "./blogList.js";
 
 async function displaySinglePost(){
     const postId = new URLSearchParams(window.location.search).get("id");
@@ -11,24 +12,30 @@ async function displaySinglePost(){
     if (singlePost){
         const blogPostContainer = document.querySelector(".blog-post-container");
 
+        const bloggElement = document.createElement("div");
+        bloggElement.innerHTML= singlePost.content.rendered
+        bloggElement.className ="single-post";
+
         const title = document.createElement("h2");
         title.textContent=singlePost.title.rendered;
-        title.className ="blog-title"
-    
-        const text = document.createElement("p");
-        text.innerHTML =singlePost.excerpt.rendered;
-        text.className ="blog-text"
-    
-        const image = document.createElement("img");
-        image.className = "blog-img"
-            image.src = singlePost.jetpack_featured_media_url;
-            image.alt = singlePost.title.rendered;
-            
-            blogPostContainer.appendChild(image)
-            blogPostContainer.appendChild(title);
-            blogPostContainer.appendChild(text)
+        title.className ="title-text";
+
+
+        blogPostContainer.appendChild(title);
+        blogPostContainer.appendChild(bloggElement);
 
     }
 }
 
+
 fetchURL().then((posts)=> displaySinglePost(posts));
+
+
+
+// const secondaryHeaders = bloggElement.querySelectorAll("p");
+// secondaryHeaders.forEach((paragraph) => {
+//     const paragraphText = paragraph.outerHTML;
+//     if(paragraphText.endsWith ('\n<p>')){
+//         paragraph.classList.add("single-post-header2")
+//     }
+// });
