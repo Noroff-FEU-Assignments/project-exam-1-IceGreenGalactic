@@ -1,8 +1,9 @@
 import { fetchURL } from "./common.js";
+import { createBlogElement } from "./utils/blogList.js";
 
 let carousel;
 let currentIndex = 0;
-const itemsPerPage = 3;
+let itemsPerPage;
 let blogList;
 
 document.addEventListener("DOMContentLoaded", async () =>{
@@ -12,37 +13,33 @@ const prevButton = document.querySelector(".prev-button");
 const nextButton = document.querySelector(".next-button");
 const maxLength = 150;
 
+blogList=await fetchURL();
+
+function setItemsPerPage(){
+    if (window.innerWidth >= 1500){
+        itemsPerPage = 4;
+    }else if(window.innerWidth >= 900){
+        itemsPerPage = 3;
+    }else{
+        itemsPerPage = 2;
+    }
+}
+    setItemsPerPage();
+    displayPosts();
+
 function displayPosts (){
     carousel.innerHTML = ``;
     for (let i = currentIndex; i < currentIndex + itemsPerPage && i <blogList.length; i++){
         const post = blogList[i];
-
-        const bloggElement = document.createElement ("div");
-        bloggElement.className ="blog-element"
-        const title = document.createElement ("h3");
-        title.className = "carousel-title";
-        title.innerHTML= `${post.title.rendered}`
-
-        const text = document.createElement("p");
-        text.className = "carousel-text";
-        text.innerHTML =  shortText(post.excerpt.rendered, maxLength);
-        
-        const img = document.createElement ("img");
-        img.className = "carousel-img";
-        img.setAttribute ("src", post.jetpack_featured_media_url);
-
-     
-        bloggElement.appendChild(img);
-        bloggElement.appendChild(title);
-        bloggElement.appendChild(text);
+        const bloggElement = createBlogElement(post, "carousel-title", "carousel-text", "carousel-img");
+        const shortText = shorterText(post.excerpt.rendered, maxLength);
+        bloggElement.querySelector(".carousel-text").innerHTML = shortText
         carousel.appendChild(bloggElement);
     }
 }
 
-blogList = await fetchURL();
-displayPosts();
 
-function shortText (text, maxLength) {
+function shorterText (text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }
 
@@ -58,6 +55,11 @@ nextButton.addEventListener("click", () =>{
         currentIndex+= itemsPerPage;
         displayPosts();
     }
+});
+
+window.addEventListener("resize", ()=>{
+    setItemsPerPage();
+    displayPosts();
 });
     }catch (error) {
         console.error("An error occorred while fetching data:", error);

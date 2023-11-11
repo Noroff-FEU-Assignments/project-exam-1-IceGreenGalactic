@@ -1,40 +1,4 @@
-import { showLoader, hideLoader } from "./utils/loader.js";
 import { fetchURL } from "./common.js";
-
-export function createBlogElement(post){
-    const bloggElement = document.createElement("div");
-
-    const title = document.createElement("h2");
-    title.textContent=post.title.rendered;
-    title.className ="blog-title"
-
-    const text = document.createElement("p");
-    text.innerHTML =post.excerpt.rendered;
-    text.className ="blog-text"
-
-    const image = document.createElement("img");
-    image.className = "blog-img"
-        image.src = post.jetpack_featured_media_url;
-        image.alt = post.title.rendered;
-
-bloggElement.appendChild(title);
-bloggElement.appendChild(image);
-bloggElement.appendChild(text);
-
-bloggElement.addEventListener ("click", () =>{
-    window.location.href = `/blogPost.html?id=${post.id}`;
-});
-return bloggElement;
-}
-
-async function displayAllPosts(){
-    const blogList = await fetchURL();
-    const blogContainer = document.querySelector (".blog-list");
-    blogList.forEach((post) =>{
-        const bloggElement = createBlogElement(post, "blog-title", "blog-text", "blog-image");
-        blogContainer.appendChild(bloggElement);
-    });
-}
 
 async function displaySinglePost(){
     const postId = new URLSearchParams(window.location.search).get("id");
@@ -67,6 +31,4 @@ async function displaySinglePost(){
     }
 }
 
-
-displayAllPosts();
 fetchURL().then((posts)=> displaySinglePost(posts));
