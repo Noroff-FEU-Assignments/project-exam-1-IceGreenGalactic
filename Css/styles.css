@@ -8,6 +8,8 @@ button {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
   min-height: 100vh;
 }
 a {
@@ -21,6 +23,14 @@ header {
   text-align: center;
   margin: 0;
   padding: 0;
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    padding: 20px 20%;
+    margin-top: auto;
+    z-index: 999;
 }
 
 .hero-container h1 {
@@ -42,7 +52,7 @@ header {
 .button-container {
   display: flex;
   justify-content: space-evenly;
-  margin: 1% 20% 0% 20%;
+  margin: 1% 20% 1% 20%;
 }
 
 .button-container button {
@@ -90,32 +100,41 @@ header {
 
 .title-text {
   text-align: center;
-  margin-top: 100px;
+  margin:20px 0px;
   font-size: 40px;
   font-weight: 900;
 }
 
 .text-container {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
   font-size: 16px;
   font-weight: 300;
   text-align: center;
-  margin: 2% 30% 0% 30%;
-  line-height: 40px;
+  max-width: 70%;
+  line-height: 30px;
+  background-color: whitesmoke;
+  padding: 30px 80px;
 }
 .text-container > h3 {
   font-size: 16px;
   font-weight: 100;
 }
 
+
+
 .dogs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
-  gap: 3%;
+  gap: 30px;
   justify-content: center;
-  margin: 100px 5% auto 5%;
+  margin: 100px 5% 30px 5%;
 }
 
-.dogs > div > img {
+.dogs > div >a> img {
   max-width: 100%;
   width: 400px;
   height: 450px;
@@ -129,6 +148,26 @@ header {
   background-color: rgb(61, 98, 2, 20%);
   padding: 15px;
   background-clip: padding-box;
+}
+
+.dogs-info >div, .dogs-info{
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    margin: auto;
+}
+.dogs-info > img {
+    height: 500px;
+    width: 500px;
+    margin-bottom: 50px;
+    object-fit: cover;
+}
+.pedigree{
+    max-width: 100%;
+    margin-bottom: 100px;
 }
 
 .carousel-wrapper {
@@ -204,31 +243,58 @@ header {
     padding: 10px;
 }
 
-
-.single-post{
-    margin: 5px 20%;
-    justify-content: center;
+.blog-post-container{
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height:100%;
+
+}
+.single-post{
+    max-width: 70%;
+height: 100%;
+background-color: whitesmoke;
+padding: 0% 10%;
+margin-top: 20px;
+margin-bottom: 50px;
+justify-content: center;
+align-items: center;
+}
+.wp-block-image{
+    margin: 0;
+    padding: 0;
+}
+.wp-block-gallery{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 800px;
+    gap: 10px;
 }
 
 .single-post img{
-    max-width: 50%;
-    width: 300px;
-    height: 300px;
+    max-width: 100%;
+    width: 600px;
+   height: 400px;
     display: block;
-    margin: auto;
     object-fit: contain;
-}
-.single-post p{
     margin-bottom: 20px;
     
 }
-.single-post-header2{
-    background-color: red;
+.single-post p{
+    margin-bottom: 20px;
+    max-width: 600px;    
 }
 
 
 @media (min-width: 1500px) {
+    .text-container {
+        font-size: 18px;
+        max-width: 700px;
+      }
+
+      
   .carousel-container {
     width: 90%;
   }
@@ -243,6 +309,16 @@ header {
     gap:50px;
     margin: 40px 90px
   }
+  .single-post p{
+    font-size: 17px;
+    max-width: 800px;    
+}
+
+.single-post img{
+width: 700px;    
+height: auto;
+max-height: 400px;
+}
  
 }
 

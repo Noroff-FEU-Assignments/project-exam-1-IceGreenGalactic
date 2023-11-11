@@ -13,15 +13,19 @@ async function displaySinglePost(){
         const blogPostContainer = document.querySelector(".blog-post-container");
 
         const bloggElement = document.createElement("div");
-        bloggElement.innerHTML= singlePost.content.rendered
         bloggElement.className ="single-post";
+
+        const contentContainer = document.createElement ("div");
+        contentContainer.innerHTML = singlePost.content.rendered
 
         const title = document.createElement("h2");
         title.textContent=singlePost.title.rendered;
         title.className ="title-text";
 
 
-        blogPostContainer.appendChild(title);
+
+        bloggElement.appendChild(title);
+        bloggElement.appendChild(contentContainer)
         blogPostContainer.appendChild(bloggElement);
 
     }

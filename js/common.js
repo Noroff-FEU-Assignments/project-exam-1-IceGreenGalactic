@@ -38,7 +38,14 @@ function setupHero(){
 function createButtons(){
     const buttonContainer = document.querySelector (".button-container");
     const buttonNames =[ "Home", "Our dogs", "Puppies", "Shows", "About us", "Contact"];
-    const buttonLinks =[ "index.HTML", "dogs.HTML", "puppies.HTML", "shows.HTML", "about.HTML", "contact.HTML"];
+    const rootPath = "/";
+    const buttonLinks =[ 
+        `${rootPath}index.HTML`,  
+        `${rootPath}dogs.HTML`,  
+        `${rootPath}puppies.HTML`,  
+        `${rootPath}shows.HTML`,  
+        `${rootPath}about.HTML`,  
+        `${rootPath}contact.HTML`];
 
     buttonNames.forEach((name, index) =>{
         const button = document.createElement("a");
