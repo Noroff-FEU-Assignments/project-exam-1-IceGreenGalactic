@@ -1,5 +1,5 @@
 import { showLoader,hideLoader } from "./utils/loader.js";
-const apiURL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts";
+const apiURL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts?per_page=100";
 
 export async function fetchURL(){
     try{

@@ -226,6 +226,7 @@ footer{
     text-align: center;
     margin: 40px;
 }
+
 .blog-list div, .blog-show-list div {
     
     background-color: rgb(61, 98, 2, 40%);
@@ -286,7 +287,26 @@ align-items: center;
     margin-bottom: 20px;
     max-width: 600px;    
 }
+.show-more-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0px;
+}
+.more-button-span{
+    margin-bottom: 10px;
+}
+.show-more-button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    margin-left: 5px;
 
+}
+.show-more-button i{
+    font-size: 18px;
+}
 
 @media (min-width: 1500px) {
     .text-container {
