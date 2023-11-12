@@ -53,6 +53,7 @@ footer{
   display: flex;
   justify-content: space-evenly;
   margin: 1% 20% 1% 20%;
+  position: relative;
 }
 
 .button-container button {
@@ -65,9 +66,26 @@ footer{
   border-radius: 10px;
 }
 
-.button-container button:hover {
+.button-container button:hover, .dropdown-container a:hover {
   text-decoration: underline;
   background-color: rgb(61, 98, 2, 40%);
+}
+
+.dropdown-container{
+    position: absolute;
+    top: 100%;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    z-index: 1;
+}
+.button-container button:hover .dropdown-container{
+    display: flex;
+}
+.dropdown-container a {
+    padding: 10px;
+    color: black;
+    background-color: rgb(61, 98, 2, 20%);
 }
 
 .loader-container {

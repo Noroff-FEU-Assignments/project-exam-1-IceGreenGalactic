@@ -37,7 +37,7 @@ function setupHero(){
 
 function createButtons(){
     const buttonContainer = document.querySelector (".button-container");
-    const buttonNames =[ "Home", "Our dogs", "Puppies", "Shows", "About us", "Contact"];
+    const buttonNames =[ "Home", "Our dogs", "Posts", "About us", "Contact"];
     const rootPath = "/";
     const buttonLinks =[ 
         `${rootPath}index.HTML`,  
@@ -45,16 +45,40 @@ function createButtons(){
         `${rootPath}puppies.HTML`,  
         `${rootPath}shows.HTML`,  
         `${rootPath}about.HTML`,  
-        `${rootPath}contact.HTML`];
+        `${rootPath}contact.HTML`
+    ];
 
     buttonNames.forEach((name, index) =>{
         const button = document.createElement("a");
         button.textContent = name;
+        button.classList.add ("menu-buttons");
         button.href = buttonLinks[index];
+        
         const buttonElement = document.createElement("button");
         buttonElement.appendChild(button);
+
+        if (name === "Posts"){
+            const dropdownContainer = document.createElement("div");
+            dropdownContainer.classList.add("dropdown-container");
+            buttonElement.appendChild(dropdownContainer);
+
+            const allPostsButton = createDropdownButton ("All Posts", `${rootPath}allPosts.HTML`);
+            const PuppiePostsButton = createDropdownButton ("Puppies", `${rootPath}puppies.HTML`);
+            const ShowPostsButton = createDropdownButton ("Shows", `${rootPath}shows.HTML`);
+
+            dropdownContainer.appendChild(allPostsButton);
+            dropdownContainer.appendChild(PuppiePostsButton);
+            dropdownContainer.appendChild(ShowPostsButton);
+
+        }
         buttonContainer.appendChild(buttonElement);
     });
+}
+function createDropdownButton (name, link){
+    const dropdownButton = document.createElement("a");
+    dropdownButton.textContent = name;
+    dropdownButton.href =link;
+    return dropdownButton;
 }
 
 
