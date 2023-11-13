@@ -102,8 +102,9 @@ function scrollFunction() {
     document.documentElement.scrollTop > 1000
   ) {
     upButton.style.display = "block";
+    upButton.style.bottom = "60px";
   } else {
-    upButton.style.display = "none";
+    upButton.style.bottom = "-100px";
   }
 }
 upButton.addEventListener("click", async () => {

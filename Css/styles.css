@@ -7,10 +7,12 @@ button {
   padding: 0;
 }
 
-body {
+body,
+html {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  flex: 1;
 }
 a {
   color: black;
@@ -18,8 +20,8 @@ a {
   font-size: 15px;
   font-weight: 600;
 }
-a:hover{
-    text-decoration: underline;
+a:hover {
+  text-decoration: underline;
 }
 header {
   position: relative;
@@ -28,27 +30,26 @@ header {
   padding: 0;
 }
 footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
   display: flex;
   justify-content: space-evenly;
   background-color: lightgray;
-  padding: 20px 20%;
-  margin-top: auto;
-  bottom: 0;
+  padding: 20px;
   z-index: 9;
 }
-.footer-links a{
-   margin-right: 20px;
-
-    
+.footer-links a {
+  margin-right: 20px;
 }
-
 
 .hero-container h1 {
   position: absolute;
   bottom: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 50px;
+  font-size: 46px;
   color: white;
   text-shadow: 2px 2px 2px black;
 }
@@ -62,7 +63,7 @@ footer {
 .button-container {
   display: flex;
   justify-content: space-evenly;
-  margin: 1% 20% 1% 20%;
+  margin: 1% 18% 1% 18%;
   position: relative;
 }
 
@@ -99,21 +100,22 @@ footer {
   background-color: rgb(61, 98, 2, 20%);
 }
 
-.up-button{
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 10%;
-    background-color: rgb(61, 98, 2, 20%);
-    cursor: pointer;
-    padding: 10px;
-    width: 40px;
-    z-index: 99;
-    font-size: 16px;
-    font-weight: 900;
+.up-button {
+  position: fixed;
+  bottom: -100px;
+  right: 10%;
+  background-color: rgb(61, 98, 2, 20%);
+  cursor: pointer;
+  padding: 10px;
+  width: 40px;
+  z-index: 99;
+  font-size: 16px;
+  font-weight: 900;
+  transition: bottom 0.3s ease;
 }
-.up-button:hover{
-    background-color: rgb(61, 98, 2, 40%);
+
+.up-button:hover {
+  background-color: rgb(61, 98, 2, 50%);
 }
 
 .loader-container {
@@ -179,6 +181,7 @@ footer {
   gap: 30px;
   justify-content: center;
   margin: 100px 5% 30px 5%;
+  min-height: 100%;
 }
 
 .dogs > div > a > img {
@@ -336,25 +339,29 @@ footer {
   max-width: 600px;
   line-height: 30px;
 }
-.close-button{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    font-size: 38px;
-    border-radius: 50%;
-        background-color: rgba(157, 176, 126,50%);
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  font-size: 38px;
+  border-radius: 50%;
+  background-color: rgba(157, 176, 126, 50%);
 }
-.close-button:hover{
-        background-color: rgba(157, 176, 126);
-
+.close-button:hover {
+  background-color: rgba(157, 176, 126);
+}
+.modal img {
+  max-width: 100%;
 }
 .show-more-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 30px 0px;
+  z-index: 1;
 }
 .more-button-span {
   font-size: 20px;
@@ -375,37 +382,39 @@ footer {
   margin-left: 10px;
 }
 
-.form-container{
-    border: solid  rgb(61, 98, 2, 40%);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    max-width: 600px; 
-    width: 100%;
-    margin: 0px auto 50px auto;
+.form-container {
+  border: solid rgb(61, 98, 2, 40%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  margin: 0px auto 50px auto;
 }
-label{
-    margin-bottom: 5px;
+label {
+  margin-bottom: 5px;
 }
-input,textarea{
-    margin-bottom: 20px;
-    padding: 8px;
+input,
+textarea {
+  margin-bottom: 20px;
+  padding: 8px;
 }
-#submitButton{
-    background-color: rgb(61, 98, 2, 40%);
-    width: 100px;
-    text-align: center;
-    margin: 0px auto;
+#submitButton {
+  background-color: rgb(61, 98, 2, 40%);
+  width: 100px;
+  text-align: center;
+  margin: 0px auto;
 }
-.success-message{
-    margin-top: 10px;
-    font-size: 20px;
-    color: rgb(61, 98, 2, 80%)
+.success-message {
+  margin-top: 10px;
+  font-size: 20px;
+  color: rgb(61, 98, 2, 80%);
 }
 
 @media (min-width: 1500px) {
-    
-
+  .hero-container h1 {
+    font-size: 56px;
+  }
   .text-container,
   .text-container-index {
     max-width: 900px;
@@ -440,18 +449,91 @@ input,textarea{
 }
 
 @media (max-width: 920px) {
+  .hero-container img {
+    height: 50vh;
+  }
   .dogs {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     gap: 2%;
-    margin: 100px 3% 1% 3%;
+    margin: 100px 25px 50px 25px;
   }
 
-  .dogs > div > img {
-    width: 300px;
+  .dogs > div > a > img {
+    width: 320px;
     height: 400px;
-    object-position: 30%;
+    object-position: 40%;
   }
   .dogs > div {
     font-size: 14px;
+    min-height: 100%;
+    margin-bottom: 5px;
+  }
+  .dogs-info,
+  .dogs-info > div {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  .title-text {
+    text-align: center;
+    margin: 0px 0px 5px 0px;
+    font-size: 36px;
+    font-weight: 900;
+  }
+  text-container,
+  .text-container-index {
+    
+    padding: 30px 0px;
+  }
+}
+@media (max-width: 620px) {
+  .hero-container img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    object-position: 50% 46%;
+  }
+  .hero-container h1 {
+    font-size: 36px;
+  }
+  .title-text {
+    text-align: center;
+    margin: 0px 0px 5px 0px;
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+  .dogs {
+    margin: 100px 25px 80px 25px;
+  }
+
+  .dogs > div > a > img {
+    object-position: 20%;
+    height: 50px;
+  }
+  .dogs > div {
+    padding-bottom: 30px;
+    font-size: 12px;
+  }
+  .dogs-info img {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+    padding: 0px 100px;
+  }
+
+  .dogs-info,
+  .dogs-info > div {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .pedigree {
+    margin: 0px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1% 10% 1% 10%;
+    position: relative;
   }
 }
