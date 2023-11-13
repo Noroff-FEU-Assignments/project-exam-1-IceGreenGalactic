@@ -25,77 +25,97 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
     return bloggElement;
 }
 
+
+
 let displayedPosts = 10;
 let startIndex = 0;
 
-async function displayPuppiesPosts() {
-    const blogList = await fetchURL();
-    const blogContainer = document.querySelector(".blog-list");
-    
+export async function displayPostsInContainer(buttonTextContent, filterFunction, targetContainerClass) {
+    try {
+        const blogList = await fetchURL();
+        const containerClasses = targetContainerClass.split(' ');
 
+        containerClasses.forEach(targetContainerClass => {
+            const blogContainer = document.querySelector(`.${targetContainerClass}`);
 
-    for (let i = startIndex; i < startIndex + displayedPosts; i++) {
-        const post = blogList[i];
-
-        if (!post) {
-            break;
-        }
-
-        if (post.categories.includes(47)) {
-            const bloggElement = createBlogElement(post, "blog-list-title", "blog-list-text", "blog-list-image");
-            blogContainer.appendChild(bloggElement);
-        }
-    }
-
-    startIndex += displayedPosts;
-
-    if (startIndex < blogList.length) {
-        const buttonContainer = document.createElement ("div");
-        buttonContainer.className ="show-more-container";
-        
-        const buttonText = document.createElement("span");
-        buttonText.className ="more-button-span"
-        buttonText.textContent = "view more posts";
-        
-        const showMoreButton = document.createElement("button");
-        showMoreButton.className = "show-more-button"
-        const iconElement = document.createElement("i");
-        iconElement.className = "fa-solid fa-arrow-down"
-        showMoreButton.appendChild(iconElement);
-
-
-        showMoreButton.addEventListener("click", () => {
-            displayPuppiesPosts();
-            buttonContainer.remove();
-            
-            if (startIndex >= blogList.length){
-                buttonText.textContent = "No more posts";
-                showMoreButton.removeChild(iconElement);
+            if (!blogContainer) {
+                console.error(`container with class "${targetContainerClass}" not found.`);
+                return;
             }
+
+            let currentFilterFunction = filterAllPosts;
+            if (targetContainerClass.includes("blog-show-posts")) {
+                currentFilterFunction = filterShowPosts;
+            } else if (targetContainerClass.includes("blog-puppies-posts")) {
+                currentFilterFunction = filterPuppiesPosts;
+            }
+
+
+            for (let i = startIndex; i < startIndex + displayedPosts && i < blogList.length; i++) {
+                const post = blogList[i];
+
+                if (currentFilterFunction(post)) {
+                    const bloggElement = createBlogElement(post, "blog-list-title", "blog-list-text", "blog-list-image");
+                    blogContainer.appendChild(bloggElement);
+                }
+            }
+
+            startIndex += displayedPosts;
+
+
+            const buttonContainer = document.createElement("div");
+            buttonContainer.className = "show-more-container";
+
+            const buttonText = document.createElement("span");
+            buttonText.className = "more-button-span"
+            buttonText.textContent = buttonTextContent;
+      
+
+
+            const showMoreButton = document.createElement("button");
+            showMoreButton.className = "show-more-button";
+            showMoreButton.textContent = buttonTextContent;
+
+
+
+            const iconElement = document.createElement("i");
+            iconElement.className = "fa-solid fa-arrow-down"
+            showMoreButton.appendChild(iconElement);
+
+            if (startIndex >= blogList.length) {
+                showMoreButton.textContent = "No more posts";
+                showMoreButton.removeChild(iconElement);
+                showMoreButton.setAttribute("disabled", true);
+            } else {
+                buttonText.textContent = buttonTextContent;
+            }
+
+
+
+            showMoreButton.addEventListener("click", async () => {
+                await displayPostsInContainer(buttonTextContent, filterFunction, targetContainerClass);
+                buttonContainer.remove();
+          
+            });
+
+            buttonContainer.appendChild(showMoreButton)
+            document.body.appendChild(buttonContainer);
         });
-        buttonContainer.appendChild(buttonText);
-        buttonContainer.appendChild(showMoreButton)
-        document.body.appendChild(buttonContainer);
+    } catch (error) {
+        console.error("error fetching data:", error);
     }
 }
 
-displayPuppiesPosts();
-
-
-
-async function displayShowPosts() {
-    const blogList = await fetchURL();
-    const blogContainer = document.querySelector(".blog-show-list");
-    blogList.forEach((post) => {
-        const puppyCategory = post.categories.includes(52);
-
-        if (puppyCategory) {
-            const bloggElement = createBlogElement(post, "blog-list-title", "blog-list-text", "blog-list-image");
-            blogContainer.appendChild(bloggElement);
-        }
-    });
+function filterAllPosts(post) {
+    return true;
+}
+function filterShowPosts(post) {
+    return post.categories.includes(52);
+}
+function filterPuppiesPosts(post) {
+    return post.categories.includes(47);
 }
 
-displayShowPosts();
+displayPostsInContainer("view more posts", filterAllPosts, "blog-all-posts blog-show-posts blog-puppies-posts");
 
 
