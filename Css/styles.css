@@ -208,8 +208,8 @@ footer {
   margin: auto;
 }
 .dogs-info > img {
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
   margin-bottom: 50px;
   object-fit: cover;
 }
@@ -332,9 +332,22 @@ footer {
   margin-bottom: 20px;
 }
 .single-post div p {
-  margin: 0px 20px 30px 50px;
+  margin: 20px auto;
   max-width: 600px;
   line-height: 30px;
+}
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    font-size: 38px;
+    border-radius: 50%;
+        background-color: rgba(157, 176, 126,50%);
+}
+.close-button:hover{
+        background-color: rgba(157, 176, 126);
+
 }
 .show-more-container {
   display: flex;

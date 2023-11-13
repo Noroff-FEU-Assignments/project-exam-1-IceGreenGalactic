@@ -1,47 +1,42 @@
 import { fetchURL } from "./common.js";
 import { createBlogElement } from "./blogList.js";
+import { createModal, addImageClickEvent } from "./utils/modal.js";
 
-async function displaySinglePost(){
+document.addEventListener("DOMContentLoaded", function () {
+  displaySinglePost();
+});
+async function displaySinglePost() {
+  try {
     const postId = new URLSearchParams(window.location.search).get("id");
-    if(!postId){
-        console.error("No post with this Id found in the URL");
-        return;
+    if (!postId) {
+      console.error("No post with this Id found in the URL");
+      return;
     }
     const blogList = await fetchURL();
-    const singlePost = blogList.find((post)=> post.id === parseInt(postId));
-    if (singlePost){
-        const blogPostContainer = document.querySelector(".blog-post-container");
+    const singlePost = blogList.find((post) => post.id === parseInt(postId));
+    if (singlePost) {
+      const blogPostContainer = document.querySelector(".blog-post-container");
 
-        const bloggElement = document.createElement("div");
-        bloggElement.className ="single-post";
+      const bloggElement = document.createElement("div");
+      bloggElement.className = "single-post";
 
-        const contentContainer = document.createElement ("div");
-        contentContainer.innerHTML = singlePost.content.rendered
+      const contentContainer = document.createElement("div");
+      contentContainer.innerHTML = singlePost.content.rendered;
 
-        const title = document.createElement("h2");
-        title.textContent=singlePost.title.rendered;
-        title.className ="title-text";
+      const title = document.createElement("h2");
+      title.textContent = singlePost.title.rendered;
+      title.className = "title-text";
 
-        document.title = singlePost.title.rendered;
+      document.title = singlePost.title.rendered;
 
+      const images = contentContainer.querySelectorAll("img");
+      addImageClickEvent(images);
 
-
-        bloggElement.appendChild(title);
-        bloggElement.appendChild(contentContainer)
-        blogPostContainer.appendChild(bloggElement);
-
+      bloggElement.appendChild(title);
+      bloggElement.appendChild(contentContainer);
+      blogPostContainer.appendChild(bloggElement);
     }
+  } catch (error) {
+    console.error("Error fetching and displaying photos", error);
+  }
 }
-
-
-fetchURL().then((posts)=> displaySinglePost(posts));
-
-
-
-// const secondaryHeaders = bloggElement.querySelectorAll("p");
-// secondaryHeaders.forEach((paragraph) => {
-//     const paragraphText = paragraph.outerHTML;
-//     if(paragraphText.endsWith ('\n<p>')){
-//         paragraph.classList.add("single-post-header2")
-//     }
-// });

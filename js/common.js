@@ -1,137 +1,143 @@
-import { showLoader,hideLoader } from "./utils/loader.js";
-const apiURL = "https://www.galacticvortexcode.no/wp-json/wp/v2/posts?per_page=100";
+import { showLoader, hideLoader } from "./utils/loader.js";
+const apiURL =
+  "https://www.galacticvortexcode.no/wp-json/wp/v2/posts?per_page=100";
 
-export async function fetchURL(){
-    try{
-        showLoader();
-        
-        const response = await fetch (apiURL);
-        if (!response.ok){
-            throw Error ("failed to fetch data");
-        }
-        const blogList = await response.json();
-        hideLoader();
-        return blogList;
-        
-    }catch (error){
-        console.error ("An error occorred while fetching data. pleas try again later");
+export async function fetchURL() {
+  try {
+    showLoader();
 
+    const response = await fetch(apiURL);
+    if (!response.ok) {
+      throw Error("failed to fetch data");
     }
+    const blogList = await response.json();
+    hideLoader();
+    return blogList;
+  } catch (error) {
+    console.error(
+      "An error occorred while fetching data. pleas try again later"
+    );
+  }
 }
 
-function setupHero(){
-    const heroContainer = document.querySelector(".hero-container");
-    
-    const heroLink = document.createElement("a");
-    heroLink.href = "/index.HTML";
-    const heroImage = document.createElement("img");
-    heroImage.src ="/images/poodleHero.jpg";
-    heroImage.alt ="Hero Image of five poodels sitting in the grass";
-    const heroTitle = document.createElement("h1");
-    heroTitle.textContent = "Kennel Shirkus";
-    
-    heroLink.appendChild (heroImage);
-    heroLink.appendChild(heroTitle);
-    heroContainer.appendChild (heroLink);
+function setupHero() {
+  const heroContainer = document.querySelector(".hero-container");
+
+  const heroLink = document.createElement("a");
+  heroLink.href = "/index.HTML";
+  const heroImage = document.createElement("img");
+  heroImage.src = "/images/poodleHero.jpg";
+  heroImage.alt = "Hero Image of five poodels sitting in the grass";
+  const heroTitle = document.createElement("h1");
+  heroTitle.textContent = "Kennel Shirkus";
+
+  heroLink.appendChild(heroImage);
+  heroLink.appendChild(heroTitle);
+  heroContainer.appendChild(heroLink);
 }
 
+function createButtons() {
+  const buttonContainer = document.querySelector(".button-container");
+  const buttonNames = ["Home", "Our dogs", "Posts", "About us", "Contact"];
+  const rootPath = "/";
+  const buttonLinks = [
+    `${rootPath}index.HTML`,
+    `${rootPath}dogs.HTML`,
+    `${rootPath}AllPosts.HTML`,
+    `${rootPath}about.HTML`,
+    `${rootPath}contact.HTML`,
+  ];
 
-function createButtons(){
-    const buttonContainer = document.querySelector (".button-container");
-    const buttonNames =[ "Home", "Our dogs", "Posts", "About us", "Contact"];
-    const rootPath = "/";
-    const buttonLinks =[ 
-        `${rootPath}index.HTML`,  
-        `${rootPath}dogs.HTML`,  
-        `${rootPath}AllPosts.HTML`,  
-        `${rootPath}about.HTML`,  
-        `${rootPath}contact.HTML`
-    ];
+  buttonNames.forEach((name, index) => {
+    const button = document.createElement("a");
+    button.textContent = name;
+    button.classList.add("menu-buttons");
+    button.href = buttonLinks[index];
 
-    buttonNames.forEach((name, index) =>{
-        const button = document.createElement("a");
-        button.textContent = name;
-        button.classList.add ("menu-buttons");
-        button.href = buttonLinks[index];
-        
-        const buttonElement = document.createElement("button");
-        buttonElement.appendChild(button);
+    const buttonElement = document.createElement("button");
+    buttonElement.appendChild(button);
 
-        if (name === "Posts"){
-            const dropdownContainer = document.createElement("div");
-            dropdownContainer.classList.add("dropdown-container");
-            buttonElement.appendChild(dropdownContainer);
+    if (name === "Posts") {
+      const dropdownContainer = document.createElement("div");
+      dropdownContainer.classList.add("dropdown-container");
+      buttonElement.appendChild(dropdownContainer);
 
-            const allPostsButton = createDropdownButton ("All Posts", `${rootPath}allPosts.HTML`);
-            const PuppiePostsButton = createDropdownButton ("Puppies", `${rootPath}puppies.HTML`);
-            const ShowPostsButton = createDropdownButton ("Shows", `${rootPath}shows.HTML`);
+      const allPostsButton = createDropdownButton(
+        "All Posts",
+        `${rootPath}allPosts.HTML`
+      );
+      const PuppiePostsButton = createDropdownButton(
+        "Puppies",
+        `${rootPath}puppies.HTML`
+      );
+      const ShowPostsButton = createDropdownButton(
+        "Shows",
+        `${rootPath}shows.HTML`
+      );
 
-            dropdownContainer.appendChild(allPostsButton);
-            dropdownContainer.appendChild(PuppiePostsButton);
-            dropdownContainer.appendChild(ShowPostsButton);
-
-        }
-        buttonContainer.appendChild(buttonElement);
-    });
+      dropdownContainer.appendChild(allPostsButton);
+      dropdownContainer.appendChild(PuppiePostsButton);
+      dropdownContainer.appendChild(ShowPostsButton);
+    }
+    buttonContainer.appendChild(buttonElement);
+  });
 }
-function createDropdownButton (name, link){
-    const dropdownButton = document.createElement("a");
-    dropdownButton.textContent = name;
-    dropdownButton.href =link;
-    return dropdownButton;
+function createDropdownButton(name, link) {
+  const dropdownButton = document.createElement("a");
+  dropdownButton.textContent = name;
+  dropdownButton.href = link;
+  return dropdownButton;
 }
 
-
-const upButton = document.createElement ("button");
+const upButton = document.createElement("button");
 upButton.textContent = "^";
-upButton.className = "up-button"
-window.onscroll = function() {
-    scrollFunction()
+upButton.className = "up-button";
+window.onscroll = function () {
+  scrollFunction();
 };
 
-function scrollFunction (){
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000){
-        upButton.style.display = "block";
-    }else{
-        upButton.style.display = "none"
-    }
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 1000 ||
+    document.documentElement.scrollTop > 1000
+  ) {
+    upButton.style.display = "block";
+  } else {
+    upButton.style.display = "none";
+  }
 }
 upButton.addEventListener("click", async () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 });
-
 
 document.body.appendChild(upButton);
 
+function setupFooter() {
+  const footerContainer = document.querySelector("footer");
+  footerContainer.className = "footer";
+  const copyrightText = document.createElement("p");
+  copyrightText.textContent = "© KennelShirkus - ALL RIGHTS RESERVED";
 
-function setupFooter (){
-    const footerContainer = document.querySelector ("footer");
-    footerContainer.className = "footer";
-    const copyrightText = document.createElement ("p");
-    copyrightText.textContent = "© KennelShirkus - ALL RIGHTS RESERVED";
+  const linksContainer = document.createElement("div");
+  linksContainer.className = "footer-links";
 
-    const linksContainer = document.createElement ("div");
-    linksContainer.className = "footer-links";
+  const aboutLink = createFooterLink("About", "about.html");
+  const contactLink = createFooterLink("Contact", "contact.HTML");
 
-    const aboutLink = createFooterLink ("About", "about.html");
-    const contactLink = createFooterLink ("Contact", "contact.HTML");
+  linksContainer.appendChild(aboutLink);
+  linksContainer.appendChild(contactLink);
 
-    linksContainer.appendChild(aboutLink);
-    linksContainer.appendChild(contactLink)
-
-    footerContainer.appendChild (copyrightText);
-    footerContainer.appendChild (linksContainer);
+  footerContainer.appendChild(copyrightText);
+  footerContainer.appendChild(linksContainer);
 }
 
-function createFooterLink (text, href){
-    const link = document.createElement ("a");
-    link.textContent = text;
-    link.href = href;
-    return link;
+function createFooterLink(text, href) {
+  const link = document.createElement("a");
+  link.textContent = text;
+  link.href = href;
+  return link;
 }
-
-
 
 fetchURL();
 setupHero();
