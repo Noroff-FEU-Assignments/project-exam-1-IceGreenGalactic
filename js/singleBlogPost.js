@@ -22,6 +22,8 @@ async function displaySinglePost(){
         title.textContent=singlePost.title.rendered;
         title.className ="title-text";
 
+        document.title = singlePost.title.rendered;
+
 
 
         bloggElement.appendChild(title);

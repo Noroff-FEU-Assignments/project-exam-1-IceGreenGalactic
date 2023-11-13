@@ -42,8 +42,7 @@ function createButtons(){
     const buttonLinks =[ 
         `${rootPath}index.HTML`,  
         `${rootPath}dogs.HTML`,  
-        `${rootPath}puppies.HTML`,  
-        `${rootPath}shows.HTML`,  
+        `${rootPath}AllPosts.HTML`,  
         `${rootPath}about.HTML`,  
         `${rootPath}contact.HTML`
     ];
