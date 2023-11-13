@@ -20,7 +20,7 @@ export async function fetchURL(){
 }
 
 function setupHero(){
-    const heroContainer = document.querySelector(`.hero-container`);
+    const heroContainer = document.querySelector(".hero-container");
     
     const heroLink = document.createElement("a");
     heroLink.href = "/index.HTML";
@@ -34,6 +34,7 @@ function setupHero(){
     heroLink.appendChild(heroTitle);
     heroContainer.appendChild (heroLink);
 }
+
 
 function createButtons(){
     const buttonContainer = document.querySelector (".button-container");
@@ -81,7 +82,58 @@ function createDropdownButton (name, link){
 }
 
 
+const upButton = document.createElement ("button");
+upButton.textContent = "^";
+upButton.className = "up-button"
+window.onscroll = function() {
+    scrollFunction()
+};
+
+function scrollFunction (){
+    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000){
+        upButton.style.display = "block";
+    }else{
+        upButton.style.display = "none"
+    }
+}
+upButton.addEventListener("click", async () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
+
+
+document.body.appendChild(upButton);
+
+
+function setupFooter (){
+    const footerContainer = document.querySelector ("footer");
+    footerContainer.className = "footer";
+    const copyrightText = document.createElement ("p");
+    copyrightText.textContent = "© KennelShirkus - ALL RIGHTS RESERVED";
+
+    const linksContainer = document.createElement ("div");
+    linksContainer.className = "footer-links";
+
+    const aboutLink = createFooterLink ("About", "about.html");
+    const contactLink = createFooterLink ("Contact", "contact.HTML");
+
+    linksContainer.appendChild(aboutLink);
+    linksContainer.appendChild(contactLink)
+
+    footerContainer.appendChild (copyrightText);
+    footerContainer.appendChild (linksContainer);
+}
+
+function createFooterLink (text, href){
+    const link = document.createElement ("a");
+    link.textContent = text;
+    link.href = href;
+    return link;
+}
+
+
 
 fetchURL();
 setupHero();
 createButtons();
+setupFooter();
