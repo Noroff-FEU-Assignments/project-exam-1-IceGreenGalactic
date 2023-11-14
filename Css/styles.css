@@ -489,6 +489,17 @@ textarea {
     
     width: 80%;
   }
+
+  .blog-all-posts,
+.blog-show-posts,
+.blog-puppies-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 28px;
+  text-align: center;
+  margin: 0px 28px;
+}
+
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -512,7 +523,7 @@ textarea {
   }
 
   .dogs {
-    margin: 100px 25px 80px 25px;
+    margin: 50px 25px 30px 25px;
   }
 
   .dogs > div > a > img {
@@ -562,5 +573,17 @@ textarea {
   max-width: 500px;
   font-size: 14px;
   padding: 30px 10px
+}
+.blog-all-posts,
+.blog-show-posts,
+.blog-puppies-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 28px;
+  text-align: center;
+  margin: 0px 90px;
+}
+.blog-list-text{
+  padding-bottom: 10px;
 }
 }

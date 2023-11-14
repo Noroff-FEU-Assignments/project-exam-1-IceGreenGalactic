@@ -6,6 +6,11 @@ let currentIndex = 0;
 let itemsPerPage;
 let blogList;
 
+export function shorterText(text, maxLength) {
+  return text.length > maxLength
+    ? text.substring(0, maxLength) + "[...]"
+    : text;
+}
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     carousel = document.querySelector(".carousel-container");
@@ -22,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         itemsPerPage = 3;
       } else if (window.innerWidth >= 600) {
         itemsPerPage = 2;
-      }else{
+      } else {
         itemsPerPage = 1;
       }
     }
@@ -49,11 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
 
-    function shorterText(text, maxLength) {
-      return text.length > maxLength
-        ? text.substring(0, maxLength) + "..."
-        : text;
-    }
+   
 
     prevButton.addEventListener("click", () => {
       if (currentIndex > 0) {

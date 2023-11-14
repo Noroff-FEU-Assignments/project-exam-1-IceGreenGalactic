@@ -1,4 +1,6 @@
 import { fetchURL } from "./common.js";
+import {shorterText} from "./utils/carousel.js"
+
 export function createBlogElement(post, titleClass, textClass, imageClass) {
   const bloggElement = document.createElement("div");
 
@@ -7,8 +9,18 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   title.className = titleClass;
 
   const text = document.createElement("p");
+  if (window.innerWidth <= 600){
+    const maxLength = 150;
+    const shortendText = shorterText(post.excerpt.rendered, maxLength);
+    text.innerHTML = shortendText 
+  }else if(window.innerWidth <= 900){
+      let maxLength = 200;
+      text.innerHTML = shorterText(post.excerpt.rendered, maxLength);
+  }else{
   text.innerHTML = post.excerpt.rendered;
-  text.className = textClass;
+}
+  
+text.className = textClass;
 
   const image = document.createElement("img");
   image.className = imageClass;
@@ -27,6 +39,7 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
 
 let displayedPosts = 10;
 let startIndex = 0;
+
 
 export async function displayPostsInContainer(
   buttonTextContent,
