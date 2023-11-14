@@ -74,7 +74,7 @@ export async function displayPostsInContainer(
 
       startIndex += displayedPosts;
 
-      const buttonContainer = document.createElement("div");
+      const buttonContainer = document.querySelector(".show-more-button");
       buttonContainer.className = "show-more-container";
 
       const buttonText = document.createElement("span");
@@ -107,7 +107,6 @@ export async function displayPostsInContainer(
       });
 
       buttonContainer.appendChild(showMoreButton);
-      document.body.appendChild(buttonContainer);
     });
   } catch (error) {
     console.error("error fetching data:", error);
