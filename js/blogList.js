@@ -25,7 +25,7 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   return bloggElement;
 }
 
-let displayedPosts = 3;
+let displayedPosts = 10;
 let startIndex = 0;
 
 export async function displayPostsInContainer(
@@ -56,13 +56,16 @@ export async function displayPostsInContainer(
         currentFilterFunction = filterPuppiesPosts;
       }
 
+      const filteredPosts = blogList.filter(currentFilterFunction);
+      let remainingPost = displayedPosts;
+
       for (
         let i = startIndex;
         i < startIndex + displayedPosts && i < blogList.length;
         i++
       ) {
-        const post = blogList[i];
-
+        const post = filteredPosts[i]; 
+       
         if (currentFilterFunction(post)) {
           const bloggElement = createBlogElement(
             post,
@@ -71,11 +74,13 @@ export async function displayPostsInContainer(
             "blog-list-image"
           );
           blogContainer.appendChild(bloggElement);
+          remainingPost--;
         }
       }
 
-      startIndex += displayedPosts;
+      startIndex += displayedPosts -remainingPost;
 
+      let initalButtonText = "view more posts"
       
 
       const buttonText = document.createElement("span");
@@ -90,17 +95,17 @@ export async function displayPostsInContainer(
       iconElement.className = "fa-solid fa-arrow-down";
       showMoreButton.appendChild(iconElement);
 
-      if (startIndex >= blogList.length) {
+      if (filteredPosts.length === 0) {
         showMoreButton.textContent = "No more posts";
         showMoreButton.removeChild(iconElement);
         showMoreButton.setAttribute("disabled", true);
       } else {
-        buttonText.textContent = buttonTextContent;
+        showMoreButton.textContent = initalButtonText;
       }
 
       showMoreButton.addEventListener("click", async () => {
         await displayPostsInContainer(
-          buttonTextContent,
+          initalButtonText,
           filterFunction,
           targetContainerClass
         );
@@ -118,10 +123,10 @@ function filterAllPosts(post) {
   return true;
 }
 function filterShowPosts(post) {
-  return post.categories.includes(52);
+  return post&& post.categories.includes(52);
 }
 function filterPuppiesPosts(post) {
-  return post.categories.includes(47);
+  return post && post.categories.includes(47);
 }
 
 displayPostsInContainer(
