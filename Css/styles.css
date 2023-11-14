@@ -278,6 +278,8 @@ footer {
   gap: 40px;
   text-align: center;
   margin: 0px 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .blog-all-posts div,
@@ -523,7 +525,8 @@ textarea {
   }
 
   .dogs {
-    margin: 50px 25px 30px 25px;
+    display: block;
+    margin: 20px 25px 50px 25px;
   }
 
   .dogs > div > a > img {
@@ -586,5 +589,7 @@ textarea {
   }
   .blog-list-text {
     padding-bottom: 10px;
+    max-width: 100%;
+    margin: 10px auto;
   }
 }
