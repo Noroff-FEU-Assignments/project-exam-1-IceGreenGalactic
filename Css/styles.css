@@ -538,6 +538,7 @@ textarea {
     font-size: 12px;
     gap: 40px;
     padding: 30px;
+    margin-bottom: 20px;
   }
   .dogs-info img {
     width: 250px;
