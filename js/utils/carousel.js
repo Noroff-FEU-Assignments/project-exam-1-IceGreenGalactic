@@ -20,8 +20,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         itemsPerPage = 4;
       } else if (window.innerWidth >= 900) {
         itemsPerPage = 3;
-      } else {
+      } else if (window.innerWidth >= 600) {
         itemsPerPage = 2;
+      }else{
+        itemsPerPage = 1;
       }
     }
     setItemsPerPage();

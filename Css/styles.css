@@ -484,6 +484,11 @@ textarea {
     
     padding: 30px 0px;
   }
+
+  .form-container {
+    
+    width: 80%;
+  }
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -502,13 +507,17 @@ textarea {
     font-weight: 900;
   }
 
+  footer, footer a {
+    font-size: 10px;
+  }
+
   .dogs {
     margin: 100px 25px 80px 25px;
   }
 
   .dogs > div > a > img {
-    object-position: 20%;
-    height: 50px;
+    object-position: center;
+    height: 300px;
   }
   .dogs > div {
     padding-bottom: 30px;
@@ -533,7 +542,25 @@ textarea {
   .button-container {
     display: flex;
     justify-content: space-evenly;
-    margin: 1% 10% 1% 10%;
+    margin: 0px 5%  30px 5%;
     position: relative;
   }
+  .button-container a{
+    font-size: 13px;
+  }
+
+ 
+.carousel-wrapper {
+   margin-bottom: 20px;
+}
+
+.form-container {
+    
+  width: 50%;
+}
+.text-container, .text-container-index{
+  max-width: 500px;
+  font-size: 14px;
+  padding: 30px 10px
+}
 }
