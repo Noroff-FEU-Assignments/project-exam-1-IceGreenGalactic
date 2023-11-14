@@ -487,20 +487,18 @@ textarea {
   }
 
   .form-container {
-    
     width: 80%;
   }
 
   .blog-all-posts,
-.blog-show-posts,
-.blog-puppies-posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-  gap: 28px;
-  text-align: center;
-  margin: 0px 28px;
-}
-
+  .blog-show-posts,
+  .blog-puppies-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    gap: 28px;
+    text-align: center;
+    margin: 0px 28px;
+  }
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -519,7 +517,8 @@ textarea {
     font-weight: 900;
   }
 
-  footer, footer a {
+  footer,
+  footer a {
     font-size: 10px;
   }
 
@@ -530,10 +529,12 @@ textarea {
   .dogs > div > a > img {
     object-position: center;
     height: 300px;
+    width: auto;
   }
   .dogs > div {
-    padding-bottom: 30px;
     font-size: 12px;
+    gap: 40px;
+    padding: 30px;
   }
   .dogs-info img {
     width: 250px;
@@ -554,38 +555,36 @@ textarea {
   .button-container {
     display: flex;
     justify-content: space-evenly;
-    margin: 0px 5%  30px 5%;
+    margin: 0px 5% 30px 5%;
     position: relative;
   }
-  .button-container a{
+  .button-container a {
     font-size: 13px;
   }
 
- 
-.carousel-wrapper {
-   margin-bottom: 20px;
-}
+  .carousel-wrapper {
+    margin-bottom: 20px;
+  }
 
-.form-container {
-    
-  width: 50%;
-}
-.text-container, .text-container-index{
-  
-  width: 80%;
-  font-size: 14px;
-  padding: 30px 10px;
-}
-.blog-all-posts,
-.blog-show-posts,
-.blog-puppies-posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-  gap: 28px;
-  text-align: center;
-  margin: 0px 90px;
-}
-.blog-list-text{
-  padding-bottom: 10px;
-}
+  .form-container {
+    width: 50%;
+  }
+  .text-container,
+  .text-container-index {
+    width: 80%;
+    font-size: 14px;
+    padding: 30px 10px;
+  }
+  .blog-all-posts,
+  .blog-show-posts,
+  .blog-puppies-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    gap: 28px;
+    text-align: center;
+    margin: 0px 90px;
+  }
+  .blog-list-text {
+    padding-bottom: 10px;
+  }
 }
