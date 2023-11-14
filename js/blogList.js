@@ -25,7 +25,7 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   return bloggElement;
 }
 
-let displayedPosts = 10;
+let displayedPosts = 3;
 let startIndex = 0;
 
 export async function displayPostsInContainer(
@@ -39,6 +39,8 @@ export async function displayPostsInContainer(
 
     containerClasses.forEach((targetContainerClass) => {
       const blogContainer = document.querySelector(`.${targetContainerClass}`);
+      const buttonContainer = document.querySelector(".show-more-container");
+      buttonContainer.className = "show-more-container";
 
       if (!blogContainer) {
         console.error(
@@ -74,8 +76,7 @@ export async function displayPostsInContainer(
 
       startIndex += displayedPosts;
 
-      const buttonContainer = document.querySelector(".show-more-button");
-      buttonContainer.className = "show-more-container";
+      
 
       const buttonText = document.createElement("span");
       buttonText.className = "more-button-span";
@@ -103,7 +104,7 @@ export async function displayPostsInContainer(
           filterFunction,
           targetContainerClass
         );
-        buttonContainer.remove();
+        showMoreButton.remove();
       });
 
       buttonContainer.appendChild(showMoreButton);
