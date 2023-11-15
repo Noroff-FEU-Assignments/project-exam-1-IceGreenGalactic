@@ -578,13 +578,12 @@ textarea {
   }
   .text-container,
   .text-container-index {
-    width: 60%;
     font-size: 14px;
-    padding: 30px 10px;
+    padding: 30px 50px;
     line-height: 30px;
   }
   .text-container h3 {
-    margin: 5px 30px 30px 30px;
+    margin: 5px 10px 30px 10px;
   }
   .blog-all-posts,
   .blog-show-posts,
