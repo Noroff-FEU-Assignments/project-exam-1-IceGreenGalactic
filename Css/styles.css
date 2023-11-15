@@ -209,6 +209,7 @@ footer {
   justify-content: center;
   background-color: whitesmoke;
   margin: auto;
+  width: 80%;
 }
 .dogs-info > img {
   height: 400px;
@@ -310,7 +311,7 @@ footer {
   max-width: 70%;
   height: 100%;
   background-color: whitesmoke;
-  padding: 0% 10%;
+  padding: 10px 10%;
   margin-top: 20px;
   margin-bottom: 50px;
   justify-content: center;
@@ -483,7 +484,6 @@ textarea {
   }
   text-container,
   .text-container-index {
-    margin: 0px 50px;
     padding: 30px 0px;
     max-width: 80%;
   }
@@ -543,18 +543,21 @@ textarea {
   .dogs-info img {
     width: 250px;
     height: auto;
+    max-width: 100%;
     object-fit: contain;
-    padding: 0px 100px;
   }
 
   .dogs-info,
   .dogs-info > div {
     margin-top: 20px;
-    padding-top: 20px;
+   
   }
 
   .pedigree {
     margin: 0px;
+  }
+  .modal img {
+    max-width: 150%;
   }
   .button-container {
     display: flex;
@@ -575,9 +578,13 @@ textarea {
   }
   .text-container,
   .text-container-index {
-    width: 80%;
+    width: 60%;
     font-size: 14px;
     padding: 30px 10px;
+    line-height: 30px;
+  }
+  .text-container h3 {
+    margin: 5px 30px 30px 30px;
   }
   .blog-all-posts,
   .blog-show-posts,
@@ -591,6 +598,31 @@ textarea {
   .blog-list-text {
     padding-bottom: 10px;
     max-width: 100%;
-    margin: 10px auto;
+    margin: 10px 10px;
+  }
+
+  .single-post img {
+    height: auto;
+  }
+  .single-post div p {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 350px) {
+  .single-post div p {
+    font-size: 13px;
+  }
+  .button-container {
+    margin: 0px 2% 20px 2%;
+  }
+  .button-container a {
+    font-size: 12px;
+  }
+  .button-container button {
+    padding: 5px;
+  }
+  .footer-links {
+    margin-left: 10px;
   }
 }
