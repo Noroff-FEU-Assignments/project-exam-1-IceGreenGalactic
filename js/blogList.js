@@ -1,6 +1,11 @@
 import { fetchURL } from "./common.js";
-import {shorterText} from "./utils/carousel.js"
+import { shorterText } from "./utils/carousel.js";
 
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, options);
+}
 export function createBlogElement(post, titleClass, textClass, imageClass) {
   const bloggElement = document.createElement("div");
 
@@ -9,18 +14,22 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   title.className = titleClass;
 
   const text = document.createElement("p");
-  if (window.innerWidth <= 600){
+  if (window.innerWidth <= 600) {
     const maxLength = 150;
     const shortendText = shorterText(post.excerpt.rendered, maxLength);
-    text.innerHTML = shortendText 
-  }else if(window.innerWidth <= 900){
-      let maxLength = 200;
-      text.innerHTML = shorterText(post.excerpt.rendered, maxLength);
-  }else{
-  text.innerHTML = post.excerpt.rendered;
-}
-  
-text.className = textClass;
+    text.innerHTML = shortendText;
+  } else if (window.innerWidth <= 900) {
+    let maxLength = 200;
+    text.innerHTML = shorterText(post.excerpt.rendered, maxLength);
+  } else {
+    text.innerHTML = post.excerpt.rendered;
+  }
+
+  text.className = textClass;
+
+  const date = document.createElement("p");
+  date.textContent = formatDate(post.date);
+  date.className = "date";
 
   const image = document.createElement("img");
   image.className = imageClass;
@@ -28,6 +37,7 @@ text.className = textClass;
   image.alt = post.title.rendered;
 
   bloggElement.appendChild(title);
+  bloggElement.appendChild(date);
   bloggElement.appendChild(image);
   bloggElement.appendChild(text);
 
@@ -39,7 +49,6 @@ text.className = textClass;
 
 let displayedPosts = 10;
 let startIndex = 0;
-
 
 export async function displayPostsInContainer(
   buttonTextContent,
@@ -77,8 +86,8 @@ export async function displayPostsInContainer(
         i < startIndex + displayedPosts && i < blogList.length;
         i++
       ) {
-        const post = filteredPosts[i]; 
-       
+        const post = filteredPosts[i];
+
         if (currentFilterFunction(post)) {
           const bloggElement = createBlogElement(
             post,
@@ -91,10 +100,9 @@ export async function displayPostsInContainer(
         }
       }
 
-      startIndex += displayedPosts -remainingPost;
+      startIndex += displayedPosts - remainingPost;
 
-      let initalButtonText = "view more posts"
-      
+      let initalButtonText = "view more posts";
 
       const buttonText = document.createElement("span");
       buttonText.className = "more-button-span";
@@ -106,24 +114,24 @@ export async function displayPostsInContainer(
 
       const iconElement = document.createElement("i");
       iconElement.className = "fa-solid fa-arrow-down";
-      showMoreButton.appendChild(iconElement);
+      showMoreButton.textContent = initalButtonText;
 
-      if (filteredPosts.length === 0) {
-        showMoreButton.textContent = "No more posts";
-        showMoreButton.removeChild(iconElement);
-        showMoreButton.setAttribute("disabled", true);
-      } else {
-        showMoreButton.textContent = initalButtonText;
-      }
-
+      showMoreButton.appendChild(iconElement)
+  
       showMoreButton.addEventListener("click", async () => {
+        showMoreButton.textContent = "Loading...";
         await displayPostsInContainer(
-          initalButtonText,
+          showMoreButton,
           filterFunction,
           targetContainerClass
         );
         showMoreButton.remove();
       });
+
+         if (remainingPost != 0) {
+        showMoreButton.textContent = "No more posts";
+        showMoreButton.setAttribute("disabled", true);
+      }
 
       buttonContainer.appendChild(showMoreButton);
     });
@@ -136,14 +144,15 @@ function filterAllPosts(post) {
   return true;
 }
 function filterShowPosts(post) {
-  return post&& post.categories.includes(52);
+  return post && post.categories.includes(52);
 }
 function filterPuppiesPosts(post) {
   return post && post.categories.includes(47);
 }
-
-displayPostsInContainer(
-  "view more posts",
-  filterAllPosts,
-  "blog-all-posts blog-show-posts blog-puppies-posts"
-);
+document.addEventListener("DOMContentLoaded", () => {
+  displayPostsInContainer(
+    "view more posts",
+    filterAllPosts,
+    "blog-all-posts blog-show-posts blog-puppies-posts"
+  );
+});

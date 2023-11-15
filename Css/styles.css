@@ -105,7 +105,7 @@ footer {
   right: 10%;
   background-color: rgb(61, 98, 2, 20%);
   cursor: pointer;
-  padding: 10px;
+  padding: 5px 2px 2px 2px;
   width: 40px;
   z-index: 99;
   font-size: 16px;
@@ -147,7 +147,7 @@ footer {
 
 .title-text {
   text-align: center;
-  margin: 20px 0px;
+  margin: 20px 5px;
   font-size: 40px;
   font-weight: 900;
 }
@@ -172,7 +172,7 @@ footer {
 .text-container > h3 {
   font-size: 16px;
   font-weight: 100;
-  margin: 40px 100px;
+  margin: 15px 10px 30px 10px;
 }
 
 .dogs {
@@ -286,7 +286,10 @@ footer {
 .blog-all-posts div,
 .blog-show-posts div,
 .blog-puppies-posts div {
-  background-color: rgb(61, 98, 2, 40%);
+  background-color: rgb(61, 98, 2, 20%);
+  height: 100%;
+  border: solid rgb(61, 98, 2, 20%);
+  margin-top: 20px;
 }
 
 .blog-list-title {
@@ -299,7 +302,10 @@ footer {
   width: 200px;
   padding: 10px;
 }
-
+.date {
+  font-size: 11px;
+  font-style: italic;
+}
 .blog-post-container {
   display: flex;
   flex-direction: column;
@@ -501,6 +507,9 @@ textarea {
     text-align: center;
     margin: 0px 28px;
   }
+  .up-button {
+    right: 3%;
+  }
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -517,6 +526,9 @@ textarea {
     margin: 0px 0px 5px 0px;
     font-size: 26px;
     font-weight: 900;
+  }
+  .text-container h3 {
+    margin: 5px 5px 30px 5px;
   }
 
   footer,
@@ -550,7 +562,6 @@ textarea {
   .dogs-info,
   .dogs-info > div {
     margin-top: 20px;
-   
   }
 
   .pedigree {
@@ -581,9 +592,6 @@ textarea {
     font-size: 14px;
     padding: 30px 50px;
     line-height: 30px;
-  }
-  .text-container h3 {
-    margin: 5px 10px 30px 10px;
   }
   .blog-all-posts,
   .blog-show-posts,
@@ -623,5 +631,12 @@ textarea {
   }
   .footer-links {
     margin-left: 10px;
+  }
+  .title-text {
+    font-size: 20px;
+  }
+  .text-container h3 {
+    font-size: 12px;
+    margin: 5px 5px 30px 5px;
   }
 }
