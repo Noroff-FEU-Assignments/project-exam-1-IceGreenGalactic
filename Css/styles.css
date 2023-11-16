@@ -180,7 +180,7 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
   gap: 30px;
   justify-content: center;
-  margin: 100px 5% 30px 5%;
+  margin: 50px 5% 30px 5%;
   min-height: 100%;
 }
 
