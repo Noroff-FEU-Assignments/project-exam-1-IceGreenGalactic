@@ -89,14 +89,20 @@ footer {
   flex-direction: column;
   background-color: white;
   z-index: 1;
+  
+  border-radius: 8px;
 }
 .button-container button:hover .dropdown-container {
   display: flex;
+  
 }
 .dropdown-container a {
   padding: 10px;
   color: black;
   background-color: rgb(61, 98, 2, 20%);
+  font-weight: 200;
+  border-radius: 8px;
+  margin: 1px;
 }
 
 .up-button {
@@ -567,9 +573,7 @@ textarea {
   .pedigree {
     margin: 0px;
   }
-  .modal img {
-    max-width: 150%;
-  }
+
   .button-container {
     display: flex;
     justify-content: space-evenly;
@@ -578,6 +582,9 @@ textarea {
   }
   .button-container a {
     font-size: 13px;
+  }
+  .button-container button {
+    padding: 5px 2%;
   }
 
   .carousel-wrapper {
