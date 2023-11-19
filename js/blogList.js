@@ -37,8 +37,8 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   image.alt = post.title.rendered;
 
   bloggElement.appendChild(title);
-  bloggElement.appendChild(date);
   bloggElement.appendChild(image);
+  bloggElement.appendChild(date);
   bloggElement.appendChild(text);
 
   bloggElement.addEventListener("click", () => {
@@ -116,8 +116,8 @@ export async function displayPostsInContainer(
       iconElement.className = "fa-solid fa-arrow-down";
       showMoreButton.textContent = initalButtonText;
 
-      showMoreButton.appendChild(iconElement)
-  
+      showMoreButton.appendChild(iconElement);
+
       showMoreButton.addEventListener("click", async () => {
         showMoreButton.textContent = "Loading...";
         await displayPostsInContainer(
@@ -128,7 +128,7 @@ export async function displayPostsInContainer(
         showMoreButton.remove();
       });
 
-         if (remainingPost != 0) {
+      if (remainingPost != 0) {
         showMoreButton.textContent = "No more posts";
         showMoreButton.setAttribute("disabled", true);
       }

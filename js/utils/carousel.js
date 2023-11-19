@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (currentIndex + itemsPerPage < numItems) {
         currentIndex += itemsPerPage;
         displayPosts();
-      }
+      } 
     });
 
     window.addEventListener("resize", () => {

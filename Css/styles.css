@@ -89,12 +89,11 @@ footer {
   flex-direction: column;
   background-color: white;
   z-index: 1;
-  
+
   border-radius: 8px;
 }
 .button-container button:hover .dropdown-container {
   display: flex;
-  
 }
 .dropdown-container a {
   padding: 10px;
@@ -232,8 +231,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(61, 98, 2, 20%);
-  margin-bottom: 200px;
+  background-color: rgb(61, 98, 2, 10%);
+  margin-bottom: 50px;
 }
 
 .carousel-container {
@@ -247,21 +246,27 @@ footer {
   text-align: center;
   width: 90%;
   justify-items: center;
+  
+  box-shadow: 0px 4px 8px rgba(0,0,0,01);
 }
 .carousel-container div {
   border: solid rgb(61, 98, 2, 20%);
   padding: 20px;
   max-width: 300px;
+  height: 320px;
+  cursor: pointer;
 }
 .carousel-img {
-  height: 200px;
+  height: 100px;
   width: 100%;
   object-fit: contain;
 }
 .carousel-title {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 10px;
+  height: 50px;
 }
+
 .blog-element {
   max-width: 240px;
   background-color: white;
@@ -275,6 +280,11 @@ footer {
   background-color: rgb(61, 98, 2, 40%);
   padding: 10px 5px;
   margin: 0px 5px;
+  color: rgb(23, 23, 23);
+}
+.next-button:hover,
+.prev-button:hover {
+  color: black;
 }
 
 .blog-all-posts,
@@ -303,6 +313,11 @@ footer {
 }
 .blog-list-text {
   margin: 10px 80px;
+}
+.blog-list-text:hover,
+.carousel-text:hover,.carousel-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .blog-list-image {
   width: 200px;
