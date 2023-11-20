@@ -89,6 +89,8 @@ footer {
   flex-direction: column;
   background-color: white;
   z-index: 1;
+  border-radius: 8px;
+
 
   border-radius: 8px;
 }
@@ -420,7 +422,7 @@ footer {
 }
 
 .form-container {
-  border: solid rgb(61, 98, 2, 40%);
+  border: solid rgb(61, 98, 2, 20%);
   padding: 40px;
   display: flex;
   flex-direction: column;
