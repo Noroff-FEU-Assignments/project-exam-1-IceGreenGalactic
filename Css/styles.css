@@ -174,10 +174,10 @@ footer {
 .text-container {
   background-color: whitesmoke;
 }
-.text-container > h3 {
+.text-container > p {
   font-size: 16px;
   font-weight: 100;
-  margin: 15px 10px 30px 10px;
+  margin: 15px 35px 30px 35px;
 }
 
 .dogs {
@@ -548,7 +548,7 @@ textarea {
     font-size: 26px;
     font-weight: 900;
   }
-  .text-container h3 {
+  .text-container p {
     margin: 5px 5px 30px 5px;
   }
 
@@ -657,7 +657,7 @@ textarea {
   .title-text {
     font-size: 20px;
   }
-  .text-container h3 {
+  .text-container p {
     font-size: 12px;
     margin: 5px 5px 30px 5px;
   }

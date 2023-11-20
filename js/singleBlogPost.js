@@ -23,7 +23,7 @@ async function displaySinglePost() {
       const contentContainer = document.createElement("div");
       contentContainer.innerHTML = singlePost.content.rendered;
 
-      const title = document.createElement("h2");
+      const title = document.createElement("h3");
       title.textContent = singlePost.title.rendered;
       title.className = "title-text";
 

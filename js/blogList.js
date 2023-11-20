@@ -9,7 +9,7 @@ function formatDate(dateString) {
 export function createBlogElement(post, titleClass, textClass, imageClass) {
   const bloggElement = document.createElement("div");
 
-  const title = document.createElement("h2");
+  const title = document.createElement("h3");
   title.textContent = post.title.rendered;
   title.className = titleClass;
 
