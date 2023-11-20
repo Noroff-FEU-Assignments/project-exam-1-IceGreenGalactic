@@ -239,7 +239,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
   grid-gap: 30px;
-  max-height: 600px;
+  height: 360px;
   overflow: hidden;
   justify-content: space-around;
   margin: 20px 0px;
@@ -247,14 +247,14 @@ footer {
   width: 90%;
   justify-items: center;
   
-  box-shadow: 0px 4px 8px rgba(0,0,0,01);
 }
 .carousel-container div {
   border: solid rgb(61, 98, 2, 20%);
   padding: 20px;
-  max-width: 300px;
-  height: 320px;
+  max-width: 240px;
+  height: 310px;
   cursor: pointer;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.9);
 }
 .carousel-img {
   height: 100px;
@@ -264,7 +264,14 @@ footer {
 .carousel-title {
   font-size: 16px;
   margin-bottom: 10px;
-  height: 50px;
+  height: 30px;
+  margin-top: 0px;
+}
+.carousel-text{
+  max-width: 70%;
+  margin: auto;
+  font-size: 14px;
+  padding-top: 5px;
 }
 
 .blog-element {
@@ -452,14 +459,11 @@ textarea {
   }
 
   .carousel-container {
-    width: 90%;
+    width: 80%;
+    margin: 20px 5px;
   }
-  .carousel-img {
-    height: 300px;
-  }
-  .carousel-title {
-    font-size: 20px;
-  }
+  
+
   .blog-list,
   .blog-show-list {
     grid-template-columns: repeat(4, 1fr);
@@ -531,6 +535,42 @@ textarea {
   .up-button {
     right: 3%;
   }
+  .carousel-text{
+    max-width: 82%;
+  }
+}
+
+@media (max-width: 700px) {
+  
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(61, 98, 2, 10%);
+  margin-bottom: 50px;
+}
+
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  grid-gap: 30px;
+  height: 360px;
+  overflow: hidden;
+  justify-content: space-around;
+  margin: 20px 0px;
+  text-align: center;
+  width: 90%;
+  justify-items: center;
+  
+}
+
+.carousel-img {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+}
+
+  
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -605,6 +645,12 @@ textarea {
   .carousel-wrapper {
     margin-bottom: 20px;
   }
+  .carousel-container{
+    gap: 15px;
+  }
+  .carousel-text{
+   font-size: 13px;
+  }
 
   .form-container {
     width: 50%;
@@ -638,6 +684,32 @@ textarea {
   }
 }
 
+@media (max-width: 520px) {
+  
+
+.carousel-img {
+  height: 100px;
+  width: 100%;
+  object-fit: contain;
+}
+.carousel-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+.carousel-text{
+  max-width: 70%;
+  margin: auto;
+  font-size: 14px;
+}
+@media (max-width: 500px) {
+  .carousel-container div{
+    max-width: 200px;
+  }
+  
+}
+  
+}
 @media (max-width: 350px) {
   .single-post div p {
     font-size: 13px;
@@ -660,5 +732,10 @@ textarea {
   .text-container p {
     font-size: 12px;
     margin: 5px 5px 30px 5px;
+  }
+  .carousel-text{
+    max-width: 90%;
+    margin: auto;
+    font-size: 14px;
   }
 }

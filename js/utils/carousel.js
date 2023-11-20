@@ -16,16 +16,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     carousel = document.querySelector(".carousel-container");
     const prevButton = document.querySelector(".prev-button");
     const nextButton = document.querySelector(".next-button");
-    const maxLength = 150;
+    const maxLength =window.innerWidth >=1300 ? 250: window.innerWidth >= 810 ?200: 150;
 
     blogList = await fetchURL();
 
     function setItemsPerPage() {
-      if (window.innerWidth >= 1500) {
+      if (window.innerWidth >= 1200) {
         itemsPerPage = 4;
-      } else if (window.innerWidth >= 900) {
+      } else if (window.innerWidth >= 700) {
         itemsPerPage = 3;
-      } else if (window.innerWidth >= 600) {
+      } else if (window.innerWidth >= 500) {
         itemsPerPage = 2;
       } else {
         itemsPerPage = 1;
@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     window.addEventListener("resize", () => {
+      const maxLength =window.innerWidth >=1300 ? 250: window.innerWidth >= 810 ?200: 150;
       setItemsPerPage();
       displayPosts();
     });
