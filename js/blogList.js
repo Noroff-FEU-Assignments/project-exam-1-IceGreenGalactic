@@ -125,9 +125,7 @@ export async function displayPostsInContainer(
         if(buttonContainer){
       let initalButtonText = "view more posts";
 
-      const buttonText = document.createElement("span");
-      buttonText.className = "more-button-span";
-      buttonText.textContent = buttonTextContent;
+   
 
       const showMoreButton = document.createElement("button");
       showMoreButton.className = "show-more-button";

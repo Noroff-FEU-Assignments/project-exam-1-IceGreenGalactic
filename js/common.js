@@ -38,7 +38,7 @@ function setupHero() {
 
 function createButtons() {
   const buttonContainer = document.querySelector(".button-container");
-  const buttonNames = ["Home", "Our dogs", "Posts", "About us", "Contact"];
+  const buttonNames = ["Home", "Our dogs", "Blog", "About us", "Contact"];
   const rootPath = "/";
   const buttonLinks = [
     `${rootPath}index.HTML`,
@@ -57,7 +57,7 @@ function createButtons() {
     const buttonElement = document.createElement("button");
     buttonElement.appendChild(button);
 
-    if (name === "Posts") {
+    if (name === "Blog") {
       const dropdownContainer = document.createElement("div");
       dropdownContainer.classList.add("dropdown-container");
       buttonElement.appendChild(dropdownContainer);
