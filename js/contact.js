@@ -5,65 +5,73 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("errorMessage").innerHTML = "";
 
       const nameInput = document.getElementById("name");
+      const nameLabel= document.querySelector(`label[for="name"]`);
       const nameValue = nameInput.value.trim();
       if (nameValue.length < 5) {
-        document.querySelector(`label[for="name"]`).textContent =
-          "Name must be more than 5 characters";
+        nameLabel.textContent = "Name must be more than 5 characters";
         nameInput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         nameInput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
+        nameLabel.style.color = "red";
 
         event.preventDefault();
         return;
       } else {
-        document.querySelector(`label[for=name]`).textContent = "";
+        nameLabel.textContent = "";
         nameInput.style.borderColor = "";
         nameInput.style.backgroundColor = "";
+        nameLabel.style.color ="";
       }
 
       const emailInput = document.getElementById("email");
+      const emailLabel = document.querySelector(`label[for="email"]`);
       const emailValue = emailInput.value.trim();
       const emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       if (!emailValidate.test(emailValue)) {
-        document.querySelector(`label[for="email"]`).textContent =
-          "Invalid email address";
+       emailLabel.textContent = "Invalid email address";
         emailInput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         emailInput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
+        emailLabel.style.color = "red"
         event.preventDefault();
         return;
       } else {
-        document.querySelector(`label[for=email]`).textContent = "";
+        emailLabel.textContent = "";
         emailInput.style.borderColor = "";
         emailInput.style.backgroundColor = "";
+        emailLabel.style.color= "";
       }
 
       const subjectInput = document.getElementById("subject");
+      const subjectLabel = document.querySelector(`label[for="subject"]`)
       const subjectValue = subjectInput.value.trim();
       if (subjectValue.length < 15) {
-        document.querySelector(`label[for="subject"]`).textContent =
-          "subject must be more than 15 characters ";
+        subjectLabel.textContent = "subject must be more than 15 characters ";
         subjectInput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         subjectInput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
+        subjectLabel.style.color = "red"
         event.preventDefault();
         return;
       } else {
-        document.querySelector(`label[for=subject]`).textContent = "";
+        subjectLabel.textContent = "";
         subjectInput.style.borderColor = "";
         subjectInput.style.backgroundColor = "";
+        subjectLabel.style.color = "";
       }
 
       const messageImput = document.getElementById("message");
+      const messageLabel = document.querySelector(`label[for = "message"]`);
       const messageValue = messageImput.value.trim();
       if (messageValue.length < 25) {
-        document.querySelector(`label[for = "message"]`).textContent =
-          "Your message must be more than 25 characters";
+        messageLabel.textContent ="Your message must be more than 25 characters";
         messageImput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         messageImput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
+        messageLabel.style.color = "red"
         event.preventDefault();
         return;
       } else {
-        document.querySelector(`label[for=message]`).textContent = "";
+         messageLabel.textContent = "";
         messageImput.style.borderColor = "";
         messageImput.style.backgroundColor = "";
+        messageLabel.style.color = "";
       }
 
       showSuccsessMessage();
@@ -75,6 +83,8 @@ function showSuccsessMessage() {
   successMessage.textContent = "Thank you for your message";
   successMessage.className = "success-message";
   const formContainer = document.querySelector(".text-container-index");
+  const form = document.querySelector (".form-container");
+  form.style.backgroundColor = "rgb(61, 98, 2, 10%)";
   formContainer.appendChild(successMessage);
 
   document.getElementById("name").value = "";

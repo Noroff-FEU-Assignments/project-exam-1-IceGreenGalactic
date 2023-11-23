@@ -8,14 +8,14 @@ export async function fetchURL() {
 
     const response = await fetch(apiURL);
     if (!response.ok) {
-      throw Error("failed to fetch data");
+      throw Error("failed to fetch data. Status: ${response.status}");
     }
     const blogList = await response.json();
     hideLoader();
     return blogList;
   } catch (error) {
     console.error(
-      "An error occorred while fetching data. pleas try again later"
+      "An error occorred while fetching data. pleas try again later. Status:", error.message
     );
   }
 }

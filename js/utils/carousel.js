@@ -6,7 +6,7 @@ let currentIndex = 0;
 let itemsPerPage;
 let blogList;
 
-export function shorterText(text, maxLength) {
+function shorterText(text, maxLength) {
   return text.length > maxLength
     ? text.substring(0, maxLength) + "[...]"
     : text;
@@ -42,15 +42,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         i++
       ) {
         const post = blogList[i];
-        const bloggElement = createBlogElement(
+        const blogElement = createBlogElement(
           post,
           "carousel-title",
           "carousel-text",
           "carousel-img"
         );
         const shortText = shorterText(post.excerpt.rendered, maxLength);
-        bloggElement.querySelector(".carousel-text").innerHTML = shortText;
-        carousel.appendChild(bloggElement);
+        blogElement.querySelector(".carousel-text").innerHTML = shortText;
+        carousel.appendChild(blogElement);
       }
     }
 

@@ -1,13 +1,18 @@
 import { fetchURL } from "./common.js";
-import { shorterText } from "./utils/carousel.js";
 
 function formatDate(dateString) {
   const options = { year: "numeric", month: "long", day: "numeric" };
   const date = new Date(dateString);
   return date.toLocaleDateString(undefined, options);
 }
+
+function shorterText(text, maxLength) {
+  return text.length > maxLength
+    ? text.substring(0, maxLength) + "[...]"
+    : text;
+}
 export function createBlogElement(post, titleClass, textClass, imageClass) {
-  const bloggElement = document.createElement("div");
+  const blogElement = document.createElement("div");
 
   const title = document.createElement("h3");
   title.textContent = post.title.rendered;
@@ -36,15 +41,15 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   image.src = post.jetpack_featured_media_url;
   image.alt = post.title.rendered;
 
-  bloggElement.appendChild(title);
-  bloggElement.appendChild(image);
-  bloggElement.appendChild(date);
-  bloggElement.appendChild(text);
+  blogElement.appendChild(title);
+  blogElement.appendChild(image);
+  blogElement.appendChild(date);
+  blogElement.appendChild(text);
 
-  bloggElement.addEventListener("click", () => {
+  blogElement.addEventListener("click", () => {
     window.location.href = `/singleBlogPost.HTML?id=${post.id}`;
   });
-  return bloggElement;
+  return blogElement;
 }
 
 let displayedPosts = 10;
@@ -61,14 +66,20 @@ export async function displayPostsInContainer(
 
     containerClasses.forEach((targetContainerClass) => {
       const blogContainer = document.querySelector(`.${targetContainerClass}`);
-      const buttonContainer = document.querySelector(".show-more-container");
-      buttonContainer.className = "show-more-container";
+   
 
       if (!blogContainer) {
-        console.error(
-          `container with class "${targetContainerClass}" not found.`
-        );
+        const isExpectedContainer = isExpectedContainerOnCurrentPage (targetContainerClass);
+        
+        if(!isExpectedContainer){
+          //if container is not ecpected, no error logged.
         return;
+      }
+      
+      console.error(
+        `container with class "${targetContainerClass}" not found.`
+      );
+      return;
       }
 
       let currentFilterFunction = filterAllPosts;
@@ -89,19 +100,24 @@ export async function displayPostsInContainer(
         const post = filteredPosts[i];
 
         if (currentFilterFunction(post)) {
-          const bloggElement = createBlogElement(
+          const blogElement = createBlogElement(
             post,
             "blog-list-title",
             "blog-list-text",
             "blog-list-image"
           );
-          blogContainer.appendChild(bloggElement);
+          blogContainer.appendChild(blogElement);
           remainingPost--;
         }
       }
 
       startIndex += displayedPosts - remainingPost;
 
+      if (isExpectedContainerOnCurrentPage(targetContainerClass)){
+        const buttonContainer = document.querySelector(".show-more-container");
+        buttonContainer.className = "show-more-container";
+  
+        if(buttonContainer){
       let initalButtonText = "view more posts";
 
       const buttonText = document.createElement("span");
@@ -134,9 +150,25 @@ export async function displayPostsInContainer(
       }
 
       buttonContainer.appendChild(showMoreButton);
-    });
+    }
+  }
+ });
   } catch (error) {
-    console.error("error fetching data:", error);
+    console.error("error fetching and displaying posts:", error);
+  }
+}
+
+function isExpectedContainerOnCurrentPage(ContainerClass){
+  //removes error if targetClass is correct
+  const currentPageURL = window.location.href;
+
+  if (currentPageURL.includes("puppies")){
+    return ContainerClass.includes("blog-puppies-posts");
+  }
+  else if (currentPageURL.includes("show")){
+    return ContainerClass.includes("blog-show-posts");
+  }else if(currentPageURL.includes("all")){
+    return ContainerClass.includes ("blog-all-posts");
   }
 }
 

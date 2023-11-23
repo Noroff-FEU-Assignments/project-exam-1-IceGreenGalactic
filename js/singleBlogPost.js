@@ -17,8 +17,8 @@ async function displaySinglePost() {
     if (singlePost) {
       const blogPostContainer = document.querySelector(".blog-post-container");
 
-      const bloggElement = document.createElement("div");
-      bloggElement.className = "single-post";
+      const blogElement = document.createElement("div");
+      blogElement.className = "single-post";
 
       const contentContainer = document.createElement("div");
       contentContainer.innerHTML = singlePost.content.rendered;
@@ -32,9 +32,9 @@ async function displaySinglePost() {
       const images = contentContainer.querySelectorAll("img");
       addImageClickEvent(images);
 
-      bloggElement.appendChild(title);
-      bloggElement.appendChild(contentContainer);
-      blogPostContainer.appendChild(bloggElement);
+      blogElement.appendChild(title);
+      blogElement.appendChild(contentContainer);
+      blogPostContainer.appendChild(blogElement);
     }
   } catch (error) {
     console.error("Error fetching and displaying photos", error);
