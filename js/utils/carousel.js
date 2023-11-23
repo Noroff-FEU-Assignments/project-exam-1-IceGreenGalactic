@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     carousel = document.querySelector(".carousel-container");
     const prevButton = document.querySelector(".prev-button");
     const nextButton = document.querySelector(".next-button");
-    const maxLength =window.innerWidth >=1300 ? 250: window.innerWidth >= 810 ?200: 150;
+    const maxLength =
+      window.innerWidth >= 1300 ? 250 : window.innerWidth >= 810 ? 200 : 150;
 
     blogList = await fetchURL();
 
@@ -36,9 +37,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function displayPosts() {
       carousel.innerHTML = ``;
+      const recentPosts = blogList.slice(0, 9);
       for (
         let i = currentIndex;
-        i < currentIndex + itemsPerPage && i < blogList.length;
+        i < currentIndex + itemsPerPage && i < recentPosts.length;
         i++
       ) {
         const post = blogList[i];
@@ -52,9 +54,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         blogElement.querySelector(".carousel-text").innerHTML = shortText;
         carousel.appendChild(blogElement);
       }
+      nextButton.disabled = currentIndex + itemsPerPage >= recentPosts.length;
     }
-
-   
 
     prevButton.addEventListener("click", () => {
       if (currentIndex > 0) {
@@ -67,11 +68,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (currentIndex + itemsPerPage < numItems) {
         currentIndex += itemsPerPage;
         displayPosts();
-      } 
+      }
     });
 
     window.addEventListener("resize", () => {
-      const maxLength =window.innerWidth >=1300 ? 250: window.innerWidth >= 810 ?200: 150;
+      const maxLength =
+        window.innerWidth >= 1300 ? 250 : window.innerWidth >= 810 ? 200 : 150;
       setItemsPerPage();
       displayPosts();
     });

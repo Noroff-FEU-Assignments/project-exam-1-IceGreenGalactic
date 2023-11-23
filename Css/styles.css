@@ -91,7 +91,6 @@ footer {
   z-index: 1;
   border-radius: 8px;
 
-
   border-radius: 8px;
 }
 .button-container button:hover .dropdown-container {
@@ -233,7 +232,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(61, 98, 2, 10%);
   margin-bottom: 50px;
 }
 
@@ -248,9 +246,9 @@ footer {
   text-align: center;
   width: 90%;
   justify-items: center;
-  
 }
 .carousel-container div {
+  background-color: rgb(61, 98, 2, 10%);
   border: solid rgb(61, 98, 2, 20%);
   padding: 20px;
   max-width: 240px;
@@ -269,7 +267,7 @@ footer {
   height: 30px;
   margin-top: 0px;
 }
-.carousel-text{
+.carousel-text {
   max-width: 70%;
   margin: auto;
   font-size: 14px;
@@ -283,17 +281,22 @@ footer {
 }
 .next-button,
 .prev-button {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   border-radius: 0px;
-  background-color: rgb(61, 98, 2, 40%);
+  background-color: transparent;
+  border: transparent;
   padding: 10px 5px;
   margin: 0px 5px;
   color: rgb(23, 23, 23);
+  cursor: pointer;
 }
 .next-button:hover,
 .prev-button:hover {
   color: black;
+}
+.next-button:disabled{
+  color: gray;
 }
 
 .blog-all-posts,
@@ -311,10 +314,11 @@ footer {
 .blog-all-posts div,
 .blog-show-posts div,
 .blog-puppies-posts div {
-  background-color: rgb(61, 98, 2, 20%);
+  background-color: rgb(61, 98, 2, 10%);
   height: 100%;
   border: solid rgb(61, 98, 2, 20%);
   margin-top: 20px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 .blog-list-title {
@@ -324,7 +328,8 @@ footer {
   margin: 10px 80px;
 }
 .blog-list-text:hover,
-.carousel-text:hover,.carousel-title:hover {
+.carousel-text:hover,
+.carousel-title:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -464,7 +469,6 @@ textarea {
     width: 80%;
     margin: 20px 5px;
   }
-  
 
   .blog-list,
   .blog-show-list {
@@ -537,42 +541,38 @@ textarea {
   .up-button {
     right: 3%;
   }
-  .carousel-text{
+  .carousel-text {
     max-width: 82%;
   }
 }
 
 @media (max-width: 700px) {
-  
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(61, 98, 2, 10%);
-  margin-bottom: 50px;
-}
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(61, 98, 2, 10%);
+    margin-bottom: 50px;
+  }
 
-.carousel-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
-  grid-gap: 30px;
-  height: 360px;
-  overflow: hidden;
-  justify-content: space-around;
-  margin: 20px 0px;
-  text-align: center;
-  width: 90%;
-  justify-items: center;
-  
-}
+  .carousel-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+    grid-gap: 30px;
+    height: 360px;
+    overflow: hidden;
+    justify-content: space-around;
+    margin: 20px 0px;
+    text-align: center;
+    width: 90%;
+    justify-items: center;
+  }
 
-.carousel-img {
-  height: 150px;
-  width: 100%;
-  object-fit: contain;
-}
-
-  
+  .carousel-img {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+  }
 }
 @media (max-width: 620px) {
   .hero-container img {
@@ -647,11 +647,11 @@ textarea {
   .carousel-wrapper {
     margin-bottom: 20px;
   }
-  .carousel-container{
+  .carousel-container {
     gap: 15px;
   }
-  .carousel-text{
-   font-size: 13px;
+  .carousel-text {
+    font-size: 13px;
   }
 
   .form-container {
@@ -687,30 +687,26 @@ textarea {
 }
 
 @media (max-width: 520px) {
-  
-
-.carousel-img {
-  height: 100px;
-  width: 100%;
-  object-fit: contain;
-}
-.carousel-title {
-  font-size: 16px;
-  margin-bottom: 10px;
-  height: 30px;
-}
-.carousel-text{
-  max-width: 70%;
-  margin: auto;
-  font-size: 14px;
-}
-@media (max-width: 500px) {
-  .carousel-container div{
-    max-width: 200px;
+  .carousel-img {
+    height: 100px;
+    width: 100%;
+    object-fit: contain;
   }
-  
-}
-  
+  .carousel-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    height: 30px;
+  }
+  .carousel-text {
+    max-width: 70%;
+    margin: auto;
+    font-size: 14px;
+  }
+  @media (max-width: 500px) {
+    .carousel-container div {
+      max-width: 200px;
+    }
+  }
 }
 @media (max-width: 350px) {
   .single-post div p {
@@ -735,7 +731,7 @@ textarea {
     font-size: 12px;
     margin: 5px 5px 30px 5px;
   }
-  .carousel-text{
+  .carousel-text {
     max-width: 90%;
     margin: auto;
     font-size: 14px;
