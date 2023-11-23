@@ -8,8 +8,8 @@ let blogList;
 
 function shorterText(text, maxLength) {
   return text.length > maxLength
-    ? text.substring(0, maxLength) + "[...]"
-    : text;
+  ? text.substring(0, maxLength) + "[...]"
+  : text;
 }
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const prevButton = document.querySelector(".prev-button");
     const nextButton = document.querySelector(".next-button");
     const maxLength =
-      window.innerWidth >= 1300 ? 250 : window.innerWidth >= 810 ? 200 : 150;
+      window.innerWidth >= 1000 ? 190 : window.innerWidth >= 820 ? 180: 120;
 
     blogList = await fetchURL();
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         itemsPerPage = 4;
       } else if (window.innerWidth >= 700) {
         itemsPerPage = 3;
-      } else if (window.innerWidth >= 500) {
+      } else if (window.innerWidth >= 515) {
         itemsPerPage = 2;
       } else {
         itemsPerPage = 1;

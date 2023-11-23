@@ -41,10 +41,15 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   image.src = post.jetpack_featured_media_url;
   image.alt = post.title.rendered;
 
+  const readMore = document.createElement ("span");
+  readMore.textContent= "Read more";
+  readMore.className = "read-more"
+
   blogElement.appendChild(title);
   blogElement.appendChild(image);
   blogElement.appendChild(date);
   blogElement.appendChild(text);
+  blogElement.appendChild(readMore);
 
   blogElement.addEventListener("click", () => {
     window.location.href = `/singleBlogPost.HTML?id=${post.id}`;

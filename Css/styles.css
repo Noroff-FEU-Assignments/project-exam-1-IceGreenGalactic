@@ -264,16 +264,26 @@ footer {
 .carousel-title {
   font-size: 16px;
   margin-bottom: 10px;
-  height: 30px;
+  height: 37px;
   margin-top: 0px;
+  overflow: auto;
 }
 .carousel-text {
+  position: relative;
   max-width: 70%;
   margin: auto;
   font-size: 14px;
   padding-top: 5px;
+  margin-bottom: 15px;
 }
 
+.read-more{
+  font-size: 12px;
+  position: relative; 
+}
+.read-more:hover{
+  text-decoration: underline;
+}
 .blog-element {
   max-width: 240px;
   background-color: white;
@@ -295,7 +305,7 @@ footer {
 .prev-button:hover {
   color: black;
 }
-.next-button:disabled{
+.next-button:disabled {
   color: gray;
 }
 
@@ -538,20 +548,31 @@ textarea {
     text-align: center;
     margin: 0px 28px;
   }
+
+  .carousel-title {
+    font-size: 14px;
+  }
   .up-button {
     right: 3%;
   }
   .carousel-text {
-    max-width: 82%;
+    max-width: 85%;
+    margin-bottom: 8px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 780px) {
+  .carousel-title {
+    font-size: 13px;
+  }
+  
+}
+
+@media (max-width: 699px) {
   .carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(61, 98, 2, 10%);
     margin-bottom: 50px;
   }
 
@@ -652,6 +673,10 @@ textarea {
   }
   .carousel-text {
     font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .carousel-title{
+    height: 33px;
   }
 
   .form-container {
@@ -686,27 +711,12 @@ textarea {
   }
 }
 
-@media (max-width: 520px) {
-  .carousel-img {
-    height: 100px;
-    width: 100%;
-    object-fit: contain;
-  }
-  .carousel-title {
-    font-size: 16px;
-    margin-bottom: 10px;
-    height: 30px;
-  }
-  .carousel-text {
-    max-width: 70%;
-    margin: auto;
-    font-size: 14px;
-  }
-  @media (max-width: 500px) {
+
+
+  @media (max-width: 520px) {
     .carousel-container div {
       max-width: 200px;
     }
-  }
 }
 @media (max-width: 350px) {
   .single-post div p {
