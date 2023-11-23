@@ -313,8 +313,8 @@ footer {
 .blog-show-posts,
 .blog-puppies-posts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
   text-align: center;
   margin: 0px 40px;
   justify-content: center;
@@ -346,7 +346,9 @@ footer {
 }
 .blog-list-image {
   width: 200px;
+  height: 150px;
   padding: 10px;
+  object-fit: contain;
 }
 .date {
   font-size: 11px;
@@ -394,6 +396,10 @@ footer {
   max-width: 600px;
   line-height: 30px;
 }
+
+.single-post p:first-child{
+  text-align: center;
+}
 .close-button {
   position: absolute;
   top: 10px;
@@ -408,6 +414,7 @@ footer {
 }
 .modal img {
   max-width: 100%;
+  max-height: 60vh;
 }
 .show-more-container {
   position: relative;
@@ -497,7 +504,11 @@ textarea {
     max-height: 400px;
   }
 }
-
+@media (min-width: 1139px){
+  .blog-list-text{
+    margin: 10px 40px;
+  }
+}
 @media (max-width: 920px) {
   .hero-container img {
     height: 50vh;
@@ -529,7 +540,7 @@ textarea {
     font-size: 36px;
     font-weight: 900;
   }
-  text-container,
+  .text-container,
   .text-container-index {
     padding: 30px 0px;
     max-width: 80%;
@@ -546,7 +557,7 @@ textarea {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
     gap: 28px;
     text-align: center;
-    margin: 0px 28px;
+    margin: 0px 28px; 
   }
 
   .carousel-title {
@@ -565,7 +576,9 @@ textarea {
   .carousel-title {
     font-size: 13px;
   }
-  
+  .blog-list-text {
+    margin: 10px 60px;
+  }
 }
 
 @media (max-width: 699px) {
@@ -700,7 +713,7 @@ textarea {
   .blog-list-text {
     padding-bottom: 10px;
     max-width: 100%;
-    margin: 10px 10px;
+    margin: 10px 30px;
   }
 
   .single-post img {

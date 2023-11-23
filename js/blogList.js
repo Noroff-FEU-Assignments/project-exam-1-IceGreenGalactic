@@ -19,15 +19,13 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   title.className = titleClass;
 
   const text = document.createElement("p");
-  if (window.innerWidth <= 600) {
-    const maxLength = 150;
+  if (window.innerWidth <= 900) {
+    const maxLength = 200;
     const shortendText = shorterText(post.excerpt.rendered, maxLength);
     text.innerHTML = shortendText;
-  } else if (window.innerWidth <= 900) {
-    let maxLength = 200;
-    text.innerHTML = shorterText(post.excerpt.rendered, maxLength);
   } else {
-    text.innerHTML = post.excerpt.rendered;
+    let maxLength = 250;
+    text.innerHTML = shorterText(post.excerpt.rendered, maxLength);
   }
 
   text.className = textClass;
