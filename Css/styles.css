@@ -122,7 +122,19 @@ footer {
 .up-button:hover {
   background-color: rgb(61, 98, 2, 50%);
 }
+.error-container{
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
 
+  padding: 30px;
+  background-color: rgb(96, 191, 183);
+  max-width: 50%;
+}
 .loader-container {
   position: fixed;
   top: 0;
@@ -575,6 +587,8 @@ textarea {
 @media (max-width: 780px) {
   .carousel-title {
     font-size: 13px;
+    line-height: 13px;
+    overflow: visible;
   }
   .blog-list-text {
     margin: 10px 60px;

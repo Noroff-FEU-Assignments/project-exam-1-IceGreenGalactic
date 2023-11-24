@@ -1,4 +1,5 @@
 import { fetchURL } from "./common.js";
+import { displayConsoleError } from "./utils/error.js";
 
 function formatDate(dateString) {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -64,7 +65,9 @@ export async function displayPostsInContainer(
   targetContainerClass
 ) {
   try {
+  
     const blogList = await fetchURL();
+  
     const containerClasses = targetContainerClass.split(" ");
 
     containerClasses.forEach((targetContainerClass) => {
@@ -155,7 +158,10 @@ export async function displayPostsInContainer(
   }
  });
   } catch (error) {
+    
     console.error("error fetching and displaying posts:", error);
+    
+  displayConsoleError();
   }
 }
 
