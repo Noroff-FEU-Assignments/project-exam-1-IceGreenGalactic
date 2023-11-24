@@ -4,23 +4,27 @@ const apiURL =
   "https://www.galacticvortexcode.no/wp-json/wp/v2/posts?per_page=100";
 
 export async function fetchURL() {
-  try {  console.log("fetchURL function called");
+  try {
+    console.log("fetchURL function called");
     showLoader();
 
     const response = await fetch(apiURL);
     if (!response.ok) {
-      throw Error(`<i class="fa-solid fa-shield-dog"></i>OOOOps! The squerls stole our data.. Status: ${response.status}`);
+      throw Error(
+        `<i class="fa-solid fa-shield-dog"></i>OOOOps! The squerls stole our data.. Status: ${response.status}`
+      );
     }
     const blogList = await response.json();
     hideLoader();
 
     return blogList;
-  
   } catch (error) {
     hideLoader();
-    showError(`uh-oh! it seems our doggy servers are napping. Pleas try again later. Error:${error.message}`);
+    showError(
+      `uh-oh! it seems our doggy servers are napping. Pleas try again later. Error:${error.message}`
+    );
     console.error(
-      "An error occorred while fetching data: ${error.message}. Please try again later. ", 
+      "An error occorred while fetching data: ${error.message}. Please try again later. "
     );
     throw error;
   }
@@ -146,11 +150,9 @@ function createFooterLink(text, href) {
   return link;
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-  
-fetchURL();
-setupHero();
-createButtons();
-setupFooter();
-
+document.addEventListener("DOMContentLoaded", function () {
+  fetchURL();
+  setupHero();
+  createButtons();
+  setupFooter();
 });

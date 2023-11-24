@@ -40,9 +40,9 @@ export function createBlogElement(post, titleClass, textClass, imageClass) {
   image.src = post.jetpack_featured_media_url;
   image.alt = post.title.rendered;
 
-  const readMore = document.createElement ("span");
-  readMore.textContent= "Read more";
-  readMore.className = "read-more"
+  const readMore = document.createElement("span");
+  readMore.textContent = "Read more";
+  readMore.className = "read-more";
 
   blogElement.appendChild(title);
   blogElement.appendChild(image);
@@ -65,27 +65,26 @@ export async function displayPostsInContainer(
   targetContainerClass
 ) {
   try {
-  
     const blogList = await fetchURL();
-  
+
     const containerClasses = targetContainerClass.split(" ");
 
     containerClasses.forEach((targetContainerClass) => {
       const blogContainer = document.querySelector(`.${targetContainerClass}`);
-   
 
       if (!blogContainer) {
-        const isExpectedContainer = isExpectedContainerOnCurrentPage (targetContainerClass);
-        
-        if(!isExpectedContainer){
+        const isExpectedContainer =
+          isExpectedContainerOnCurrentPage(targetContainerClass);
+
+        if (!isExpectedContainer) {
           //if container is not ecpected, no error logged.
+          return;
+        }
+
+        console.error(
+          `container with class "${targetContainerClass}" not found.`
+        );
         return;
-      }
-      
-      console.error(
-        `container with class "${targetContainerClass}" not found.`
-      );
-      return;
       }
 
       let currentFilterFunction = filterAllPosts;
@@ -119,63 +118,59 @@ export async function displayPostsInContainer(
 
       startIndex += displayedPosts - remainingPost;
 
-      if (isExpectedContainerOnCurrentPage(targetContainerClass)){
+      if (isExpectedContainerOnCurrentPage(targetContainerClass)) {
         const buttonContainer = document.querySelector(".show-more-container");
         buttonContainer.className = "show-more-container";
-  
-        if(buttonContainer){
-      let initalButtonText = "view more posts";
 
-   
+        if (buttonContainer) {
+          let initalButtonText = "view more posts";
 
-      const showMoreButton = document.createElement("button");
-      showMoreButton.className = "show-more-button";
-      showMoreButton.textContent = buttonTextContent;
+          const showMoreButton = document.createElement("button");
+          showMoreButton.className = "show-more-button";
+          showMoreButton.textContent = buttonTextContent;
 
-      const iconElement = document.createElement("i");
-      iconElement.className = "fa-solid fa-arrow-down";
-      showMoreButton.textContent = initalButtonText;
+          const iconElement = document.createElement("i");
+          iconElement.className = "fa-solid fa-arrow-down";
+          showMoreButton.textContent = initalButtonText;
 
-      showMoreButton.appendChild(iconElement);
+          showMoreButton.appendChild(iconElement);
 
-      showMoreButton.addEventListener("click", async () => {
-        showMoreButton.textContent = "Loading...";
-        await displayPostsInContainer(
-          showMoreButton,
-          filterFunction,
-          targetContainerClass
-        );
-        showMoreButton.remove();
-      });
+          showMoreButton.addEventListener("click", async () => {
+            showMoreButton.textContent = "Loading...";
+            await displayPostsInContainer(
+              showMoreButton,
+              filterFunction,
+              targetContainerClass
+            );
+            showMoreButton.remove();
+          });
 
-      if (remainingPost != 0) {
-        showMoreButton.textContent = "No more posts";
-        showMoreButton.setAttribute("disabled", true);
+          if (remainingPost != 0) {
+            showMoreButton.textContent = "No more posts";
+            showMoreButton.setAttribute("disabled", true);
+          }
+
+          buttonContainer.appendChild(showMoreButton);
+        }
       }
-
-      buttonContainer.appendChild(showMoreButton);
-    }
-  }
- });
+    });
   } catch (error) {
-    
     console.error("error fetching and displaying posts:", error);
-    
-  displayConsoleError();
+
+    displayConsoleError();
   }
 }
 
-function isExpectedContainerOnCurrentPage(ContainerClass){
+function isExpectedContainerOnCurrentPage(ContainerClass) {
   //removes error if targetClass is correct
   const currentPageURL = window.location.href;
 
-  if (currentPageURL.includes("puppies")){
+  if (currentPageURL.includes("puppies")) {
     return ContainerClass.includes("blog-puppies-posts");
-  }
-  else if (currentPageURL.includes("show")){
+  } else if (currentPageURL.includes("show")) {
     return ContainerClass.includes("blog-show-posts");
-  }else if(currentPageURL.includes("all")){
-    return ContainerClass.includes ("blog-all-posts");
+  } else if (currentPageURL.includes("all")) {
+    return ContainerClass.includes("blog-all-posts");
   }
 }
 

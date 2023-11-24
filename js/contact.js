@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("errorMessage").innerHTML = "";
 
       const nameInput = document.getElementById("name");
-      const nameLabel= document.querySelector(`label[for="name"]`);
+      const nameLabel = document.querySelector(`label[for="name"]`);
       const nameValue = nameInput.value.trim();
       if (nameValue.length < 5) {
         nameLabel.textContent = "Name must be more than 5 characters";
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nameLabel.textContent = "";
         nameInput.style.borderColor = "";
         nameInput.style.backgroundColor = "";
-        nameLabel.style.color ="";
+        nameLabel.style.color = "";
       }
 
       const emailInput = document.getElementById("email");
@@ -27,27 +27,27 @@ document.addEventListener("DOMContentLoaded", function () {
       const emailValue = emailInput.value.trim();
       const emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       if (!emailValidate.test(emailValue)) {
-       emailLabel.textContent = "Invalid email address";
+        emailLabel.textContent = "Invalid email address";
         emailInput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         emailInput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
-        emailLabel.style.color = "red"
+        emailLabel.style.color = "red";
         event.preventDefault();
         return;
       } else {
         emailLabel.textContent = "";
         emailInput.style.borderColor = "";
         emailInput.style.backgroundColor = "";
-        emailLabel.style.color= "";
+        emailLabel.style.color = "";
       }
 
       const subjectInput = document.getElementById("subject");
-      const subjectLabel = document.querySelector(`label[for="subject"]`)
+      const subjectLabel = document.querySelector(`label[for="subject"]`);
       const subjectValue = subjectInput.value.trim();
       if (subjectValue.length < 15) {
         subjectLabel.textContent = "subject must be more than 15 characters ";
         subjectInput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         subjectInput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
-        subjectLabel.style.color = "red"
+        subjectLabel.style.color = "red";
         event.preventDefault();
         return;
       } else {
@@ -61,14 +61,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const messageLabel = document.querySelector(`label[for = "message"]`);
       const messageValue = messageImput.value.trim();
       if (messageValue.length < 25) {
-        messageLabel.textContent ="Your message must be more than 25 characters";
+        messageLabel.textContent =
+          "Your message must be more than 25 characters";
         messageImput.style.borderColor = " rgba(174, 12, 6, 0.6)";
         messageImput.style.backgroundColor = " rgba(174, 12, 6, 0.1)";
-        messageLabel.style.color = "red"
+        messageLabel.style.color = "red";
         event.preventDefault();
         return;
       } else {
-         messageLabel.textContent = "";
+        messageLabel.textContent = "";
         messageImput.style.borderColor = "";
         messageImput.style.backgroundColor = "";
         messageLabel.style.color = "";
@@ -83,7 +84,7 @@ function showSuccsessMessage() {
   successMessage.textContent = "Thank you for your message";
   successMessage.className = "success-message";
   const formContainer = document.querySelector(".text-container-index");
-  const form = document.querySelector (".form-container");
+  const form = document.querySelector(".form-container");
   form.style.backgroundColor = "rgb(61, 98, 2, 10%)";
   formContainer.appendChild(successMessage);
 
