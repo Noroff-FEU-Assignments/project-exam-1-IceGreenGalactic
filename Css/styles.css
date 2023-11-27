@@ -499,6 +499,10 @@ textarea {
   .hero-container h1 {
     font-size: 56px;
   }
+
+  .dropdown-container a {
+    font-size: 15px;
+  }
   .text-container,
   .text-container-index {
     max-width: 900px;
@@ -533,6 +537,7 @@ textarea {
   }
   .up-button {
     padding: 12px 10px 10px 10px;
+    font-size: 16px;
   }
 }
 @media (min-width: 1139px) {
