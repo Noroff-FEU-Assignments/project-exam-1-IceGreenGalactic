@@ -495,7 +495,7 @@ textarea {
   color: rgb(61, 98, 2, 80%);
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1450px) {
   .hero-container h1 {
     font-size: 56px;
   }
