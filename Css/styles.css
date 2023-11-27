@@ -536,8 +536,9 @@ textarea {
     max-height: 400px;
   }
   .up-button {
-    padding: 12px 10px 10px 10px;
+    padding: 15px 15px 15px 15px;
     font-size: 16px;
+    font-weight: 900;
   }
 }
 @media (min-width: 1139px) {
