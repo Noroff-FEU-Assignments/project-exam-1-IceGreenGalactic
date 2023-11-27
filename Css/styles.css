@@ -531,6 +531,9 @@ textarea {
     height: auto;
     max-height: 400px;
   }
+  .up-button {
+    padding: 12px 10px 10px 10px;
+  }
 }
 @media (min-width: 1139px) {
   .blog-list-text {
