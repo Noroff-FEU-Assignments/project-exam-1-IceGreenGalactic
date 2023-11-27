@@ -5,7 +5,7 @@ const apiURL =
 
 export async function fetchURL() {
   try {
-    console.log("fetchURL function called");
+  
     showLoader();
 
     const response = await fetch(apiURL);
@@ -21,7 +21,7 @@ export async function fetchURL() {
   } catch (error) {
     hideLoader();
     showError(
-      `uh-oh! it seems our doggy servers are napping. Pleas try again later. Error:${error.message}`
+      `<i class="fa-solid fa-shield-dog"></i> <br> OOOOps! The squerls stole our data... Error:${error.message}`
     );
     console.error(
       "An error occorred while fetching data: ${error.message}. Please try again later. "

@@ -89,9 +89,7 @@ footer {
   flex-direction: column;
   background-color: white;
   z-index: 1;
-  border-radius: 8px;
-
-  border-radius: 8px;
+  border-radius: 10px;
 }
 .button-container button:hover .dropdown-container {
   display: flex;
@@ -111,7 +109,7 @@ footer {
   right: 10%;
   background-color: rgb(192, 203, 169);
   cursor: pointer;
-  padding: 5px 2px 2px 2px;
+  padding: 7px 5px 5px 5px;
   width: 30px;
   z-index: 99;
   font-size: 10px;
@@ -122,18 +120,24 @@ footer {
 .up-button:hover {
   background-color: rgb(61, 98, 2, 50%);
 }
-.error-container{
-  position: absolute;
+.error-container {
+  position: fixed;
   justify-content: center;
   align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-
   padding: 30px;
   background-color: rgb(96, 191, 183);
   max-width: 50%;
+}
+
+.fa-shield-dog {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
 }
 .loader-container {
   position: fixed;
@@ -289,11 +293,11 @@ footer {
   margin-bottom: 15px;
 }
 
-.read-more{
+.read-more {
   font-size: 12px;
-  position: relative; 
+  position: relative;
 }
-.read-more:hover{
+.read-more:hover {
   text-decoration: underline;
 }
 .blog-element {
@@ -409,7 +413,7 @@ footer {
   line-height: 30px;
 }
 
-.single-post p:first-child{
+.single-post p:first-child {
   text-align: center;
 }
 .close-button {
@@ -516,8 +520,8 @@ textarea {
     max-height: 400px;
   }
 }
-@media (min-width: 1139px){
-  .blog-list-text{
+@media (min-width: 1139px) {
+  .blog-list-text {
     margin: 10px 40px;
   }
 }
@@ -569,7 +573,7 @@ textarea {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
     gap: 28px;
     text-align: center;
-    margin: 0px 28px; 
+    margin: 0px 28px;
   }
 
   .carousel-title {
@@ -702,7 +706,7 @@ textarea {
     font-size: 13px;
     margin-bottom: 6px;
   }
-  .carousel-title{
+  .carousel-title {
     height: 33px;
   }
 
@@ -738,12 +742,10 @@ textarea {
   }
 }
 
-
-
-  @media (max-width: 520px) {
-    .carousel-container div {
-      max-width: 200px;
-    }
+@media (max-width: 520px) {
+  .carousel-container div {
+    max-width: 200px;
+  }
 }
 @media (max-width: 350px) {
   .single-post div p {
