@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       if (document.querySelectorAll(".form-error-message").length > 0) {
         event.preventDefault();
-        console.log("Show Success Message");
       } else {
         showSuccsessMessage();
       }
