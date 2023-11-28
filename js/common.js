@@ -133,12 +133,21 @@ function setupFooter() {
   const linksContainer = document.createElement("div");
   linksContainer.className = "footer-links";
 
+  const iconContainer = document.createElement ("div");
+  const iconImg = document.createElement ("img");
+  iconImg.src = "/favicon.ico";
+  iconImg.alt = "favIcon a poodle with the text kennel Shirkus underneeth";
+  iconImg.className = "favicon";
+
+  iconContainer.appendChild (iconImg);
+
   const aboutLink = createFooterLink("About", "about.html");
   const contactLink = createFooterLink("Contact", "contact.HTML");
 
   linksContainer.appendChild(aboutLink);
   linksContainer.appendChild(contactLink);
 
+  footerContainer.appendChild(iconContainer);
   footerContainer.appendChild(copyrightText);
   footerContainer.appendChild(linksContainer);
 }

@@ -38,13 +38,18 @@ footer {
   margin-top: auto;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   background-color: lightgray;
-  padding: 20px;
+  padding: 2px;
   z-index: 9;
   margin-top: 40px;
 }
 .footer-links a {
   margin-right: 20px;
+}
+.favicon {
+  height: 60px;
+  width: 40px;
 }
 
 .hero-container h1 {
