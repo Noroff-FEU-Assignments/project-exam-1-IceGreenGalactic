@@ -606,6 +606,18 @@ textarea {
     max-width: 90%;
     margin-bottom: 5px;
   }
+  
+.carousel-container {
+  height: 500px;
+}
+.carousel-container div {
+ height: 380px;
+ }
+.carousel-img {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+}
 }
 
 @media (max-width: 780px) {
@@ -629,7 +641,12 @@ textarea {
 
   .carousel-container {
     width: 90%;
+    height: 500px;
   }
+ 
+  .carousel-container div {
+   height: 320px;
+   }
 
   .carousel-img {
     height: 150px;
