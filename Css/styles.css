@@ -234,7 +234,11 @@ footer {
   padding: 15px;
   background-clip: padding-box;
 }
-
+.dogs h3{
+  font-size: 20px;
+  margin: 5px;
+  
+}
 .dogs-info > div,
 .dogs-info {
   display: flex;
@@ -252,6 +256,7 @@ footer {
   margin-bottom: 50px;
   object-fit: cover;
 }
+
 .pedigree {
   max-width: 100%;
   margin-bottom: 100px;
@@ -576,6 +581,7 @@ textarea {
     margin-top: 20px;
     padding-top: 20px;
   }
+  
   .title-text {
     text-align: center;
     margin: 0px 0px 5px 0px;
