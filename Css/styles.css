@@ -60,6 +60,7 @@ footer {
   font-size: 46px;
   color: white;
   text-shadow: 2px 2px 2px black;
+  white-space: nowrap;
 }
 .hero-container img {
   width: 100%;
