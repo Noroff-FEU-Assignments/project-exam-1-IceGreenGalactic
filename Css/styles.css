@@ -128,7 +128,7 @@ footer {
   font-size: 14px;
   font-weight: 900;
   transition: bottom 0.3s ease;
-  color: rgb(57, 57, 57)
+  color: rgb(57, 57, 57);
 }
 
 .up-button:hover {
@@ -137,7 +137,6 @@ footer {
   cursor: pointer;
   font-size: 16px;
 }
-
 
 .error-container {
   position: fixed;
@@ -240,10 +239,9 @@ footer {
   padding: 15px;
   background-clip: padding-box;
 }
-.dogs h3{
+.dogs h3 {
   font-size: 20px;
   margin: 5px;
-  
 }
 .dogs-info > div,
 .dogs-info {
@@ -261,11 +259,13 @@ footer {
   width: 400px;
   margin-bottom: 50px;
   object-fit: cover;
+  cursor: zoom-in;
 }
 
 .pedigree {
   max-width: 100%;
   margin-bottom: 100px;
+  cursor: zoom-in;
 }
 
 .carousel-wrapper {
@@ -370,13 +370,12 @@ footer {
 }
 .blog-all-posts div:hover,
 .blog-show-posts div:hover,
-.blog-puppies-posts div:hover{
+.blog-puppies-posts div:hover,
+.carousel-container div:hover {
   text-decoration: underline;
   cursor: pointer;
-  text-shadow: 0px 0px 2px rgba(0,0,0, 0.1);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
   background-color: rgb(61, 98, 2, 15%);
-
-
 }
 
 .blog-list-title {
@@ -414,24 +413,31 @@ footer {
   align-items: center;
 }
 .wp-block-image {
-  margin: 0;
-  padding: 0;
+  cursor: zoom-in;
+  overflow: hidden;
+  margin: auto;
 }
 .wp-block-gallery {
-  margin: 0;
-  padding: 0;
   display: flex;
-  max-width: 800px;
   gap: 10px;
+  overflow: hidden;
+  padding: 0px;
+}
+.wp-block-gallery img {
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
+  object-fit: contain;
+  max-width: 100%;
+  width: auto;
+  max-height: 200px;
+  flex: 1;
 }
 
 .single-post img {
-  max-width: 100%;
-  width: 600px;
-  height: 400px;
   display: block;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin: 10px auto;
 }
 .single-post div p {
   margin: 20px auto;
@@ -458,6 +464,7 @@ footer {
   max-width: 100%;
   max-height: 60vh;
 }
+
 .show-more-container {
   position: relative;
   display: flex;
@@ -479,13 +486,19 @@ footer {
   padding: 10px;
   color: black;
 }
-.show-more-button:hover{
+.show-more-button:hover {
   font-size: larger;
 }
 .show-more-button i {
   font-size: 18px;
   margin-left: 10px;
   color: black;
+}
+
+.show-more-button:disabled {
+  color: gray;
+  font-size: large;
+  cursor: default;
 }
 
 .form-container {
@@ -592,7 +605,7 @@ textarea {
     margin-top: 20px;
     padding-top: 20px;
   }
-  
+
   .title-text {
     text-align: center;
     margin: 0px 0px 5px 0px;
