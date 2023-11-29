@@ -89,7 +89,7 @@ footer {
 .button-container button:hover,
 .dropdown-container a:hover {
   text-decoration: underline;
-  background-color: rgb(61, 98, 2, 40%);
+  background-color: rgb(61, 98, 2, 30%);
 }
 
 .dropdown-container {
@@ -125,14 +125,20 @@ footer {
   padding: 7px 5px 5px 5px;
   min-width: 30px;
   z-index: 99;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 900;
   transition: bottom 0.3s ease;
+  color: rgb(57, 57, 57)
 }
 
 .up-button:hover {
-  background-color: rgb(61, 98, 2, 50%);
+  color: black;
+  box-shadow: 0 0 20px rgb(61, 98, 2, 40%);
+  cursor: pointer;
+  font-size: 16px;
 }
+
+
 .error-container {
   position: fixed;
   justify-content: center;
@@ -315,9 +321,7 @@ footer {
   font-size: 14px;
   position: relative;
 }
-.read-more:hover {
-  text-decoration: underline;
-}
+
 .blog-element {
   max-width: 240px;
   background-color: white;
@@ -364,6 +368,16 @@ footer {
   margin-top: 20px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.9);
 }
+.blog-all-posts div:hover,
+.blog-show-posts div:hover,
+.blog-puppies-posts div:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  text-shadow: 0px 0px 2px rgba(0,0,0, 0.1);
+  background-color: rgb(61, 98, 2, 15%);
+
+
+}
 
 .blog-list-title {
   padding: 10px;
@@ -371,13 +385,7 @@ footer {
 .blog-list-text {
   margin: 10px 80px;
 }
-.blog-list-text:hover,
-.carousel-text:hover,
-.blog-list-title:hover,
-.carousel-title:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
+
 .blog-list-image {
   width: 200px;
   height: 150px;
@@ -470,6 +478,9 @@ footer {
   margin-left: 5px;
   padding: 10px;
   color: black;
+}
+.show-more-button:hover{
+  font-size: larger;
 }
 .show-more-button i {
   font-size: 18px;

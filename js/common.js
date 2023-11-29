@@ -97,10 +97,13 @@ function createDropdownButton(name, link) {
   dropdownButton.href = link;
   return dropdownButton;
 }
+const upIcon = document.createElement ("i");
+upIcon.className = "fa-solid fa-angles-up";
 
 const upButton = document.createElement("button");
-upButton.textContent = "^";
+upButton.textContent = "";
 upButton.className = "up-button";
+upButton.appendChild(upIcon)
 window.onscroll = function () {
   scrollFunction();
 };
