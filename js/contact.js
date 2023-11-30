@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (document.querySelectorAll(".form-error-message").length > 0) {
         event.preventDefault();
       } else {
-        showSuccsessMessage();
+        showSuccessMessage();
       }
     });
 });
@@ -72,7 +72,7 @@ function resetErrorMessages(input, label) {
 
   event.preventDefault();
 }
-function showSuccsessMessage() {
+function showSuccessMessage() {
   const successMessage = document.createElement("div");
   successMessage.textContent = "Thank you for your message";
   successMessage.className = "success-message";
@@ -85,7 +85,7 @@ function showSuccsessMessage() {
   document.getElementById("email").value = "";
   document.getElementById("subject").value = "";
   document.getElementById("message").value = "";
-  document.getElementById("submitButton").textContent = "Sendt";
+  document.getElementById("submitButton").textContent = "Sent";
   document.getElementById("submitButton").setAttribute("disabled", true);
 }
 
@@ -99,6 +99,6 @@ function setErrorMessage(label, errorMessage, input, event) {
     event.preventDefault();
   } else {
     resetErrorMessages(input, label);
-    showSuccsessMessage();
+    showSuccessMessage();
   }
 }
