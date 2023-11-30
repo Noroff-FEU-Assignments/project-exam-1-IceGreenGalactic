@@ -66,7 +66,62 @@ function createButtons() {
     const buttonElement = document.createElement("button");
     buttonElement.appendChild(button);
 
-    if (name === "Blog") {
+    if (name.toLowerCase() === "our dogs") {
+      const dogsDropdownContainer = document.createElement("div");
+      dogsDropdownContainer.classList.add("dogs-dropdown-container");
+      buttonElement.appendChild(dogsDropdownContainer);
+      const allDogsButton = createDropdownButton(
+        "All dogs",
+        `${rootPath}dogs.HTML`
+      );
+      const zizuButton = createDropdownButton(
+        "Zizu",
+        `${rootPath}DogsInfo/zizu.HTML`
+      );
+      const rayaButton = createDropdownButton(
+        "Raya",
+        `${rootPath}DogsInfo/Raya.HTML`
+      );
+      const zpiceyButton = createDropdownButton(
+        "Zpicey",
+        `${rootPath}DogsInfo/zpicey.HTML`
+      );
+      const eeveeButton = createDropdownButton(
+        "Eevee",
+        `${rootPath}DogsInfo/eevee.HTML`
+      );
+      const fantButton = createDropdownButton(
+        "Fant",
+        `${rootPath}DogsInfo/fant.HTML`
+      );
+      const nalaButton = createDropdownButton(
+        "Nala",
+        `${rootPath}DogsInfo/nala.HTML`
+      );
+      const zieraButton = createDropdownButton(
+        "Ziera",
+        `${rootPath}DogsInfo/ziera.HTML`
+      );
+      const izzyButton = createDropdownButton(
+        "Izzy",
+        `${rootPath}DogsInfo/izzy.HTML`
+      );
+      const kiraButton = createDropdownButton(
+        "kira",
+        `${rootPath}DogsInfo/kira.HTML`
+      );
+
+      dogsDropdownContainer.appendChild(allDogsButton);
+      dogsDropdownContainer.appendChild(zizuButton);
+      dogsDropdownContainer.appendChild(rayaButton);
+      dogsDropdownContainer.appendChild(zpiceyButton);
+      dogsDropdownContainer.appendChild(eeveeButton);
+      dogsDropdownContainer.appendChild(fantButton);
+      dogsDropdownContainer.appendChild(nalaButton);
+      dogsDropdownContainer.appendChild(zieraButton);
+      dogsDropdownContainer.appendChild(izzyButton);
+      dogsDropdownContainer.appendChild(kiraButton);
+    } else if (name === "Blog") {
       const dropdownContainer = document.createElement("div");
       dropdownContainer.classList.add("dropdown-container");
       buttonElement.appendChild(dropdownContainer);
@@ -91,19 +146,21 @@ function createButtons() {
     buttonContainer.appendChild(buttonElement);
   });
 }
+
 function createDropdownButton(name, link) {
   const dropdownButton = document.createElement("a");
   dropdownButton.textContent = name;
   dropdownButton.href = link;
   return dropdownButton;
 }
-const upIcon = document.createElement ("i");
+
+const upIcon = document.createElement("i");
 upIcon.className = "fa-solid fa-angles-up";
 
 const upButton = document.createElement("button");
 upButton.textContent = "";
 upButton.className = "up-button";
-upButton.appendChild(upIcon)
+upButton.appendChild(upIcon);
 window.onscroll = function () {
   scrollFunction();
 };

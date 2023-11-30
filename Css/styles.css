@@ -86,36 +86,45 @@ footer {
   border-radius: 10px;
 }
 
-.button-container button:hover,
-.dropdown-container a:hover {
+.button-container button:hover {
   text-decoration: underline;
   background-color: rgb(61, 98, 2, 30%);
 }
-
 .dropdown-container {
-  position: absolute;
-  top: 100%;
   left: 50%;
   transform: translate(-50%);
+  
+}
+.dropdown-container,
+.dogs-dropdown-container {
+  position: absolute;
+  top: 100%;
   display: none;
   flex-direction: column;
-  background-color: white;
   z-index: 1;
   border-radius: 10px;
+  width: auto;
 }
-.button-container button:hover .dropdown-container {
+.button-container button:hover .dropdown-container,
+.button-container button:hover .dogs-dropdown-container {
   display: flex;
 }
-.dropdown-container a {
+.dropdown-container a,.dogs-dropdown-container a {
   font-size: 13px;
   padding: 10px;
   color: black;
-  background-color: rgb(61, 98, 2, 20%);
+  background-color: rgb(214, 221, 200);
   font-weight: 200;
   border-radius: 8px;
   margin: 1px;
 }
+.dropdown-container a:hover,.dogs-dropdown-container a:hover{
+  background-color: rgb(192, 203, 169);
 
+} 
+.dogs-dropdown-container a {
+  padding: 5px 15px;
+}
 .up-button {
   position: fixed;
   bottom: -100px;
@@ -472,15 +481,15 @@ footer {
 .modal img {
   display: flex;
   max-width: 100%;
-  height: auto; 
+  height: auto;
   object-fit: contain;
   min-height: 40vh;
   max-height: 80vh;
 }
-.modal{
-max-width: 80%;
-max-height: 90vh;
-background-color: whitesmoke;
+.modal {
+  max-width: 80%;
+  max-height: 90vh;
+  background-color: whitesmoke;
 }
 
 .show-more-container {
@@ -753,7 +762,7 @@ textarea {
   .dogs-info {
     font-size: 14px;
   }
- 
+
   .pedigree {
     margin: 0px;
   }
