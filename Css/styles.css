@@ -503,16 +503,18 @@ footer {
 }
 .close-button {
   color: black;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: fixed;
+  top: 230px;
+  right: 10%;
   display: flex;
-  font-size: 38px;
+  font-size: 30px;
   border-radius: 50%;
-  background-color: rgba(157, 176, 126, 50%);
+  color: black;
+  background-color: transparent;
 }
 .close-button:hover {
-  background-color: rgba(157, 176, 126);
+    color:darkgray;
+
 }
 .modal img {
   display: flex;
@@ -526,15 +528,22 @@ footer {
   max-width: 80%;
   max-height: 90vh;
   background-color: whitesmoke;
+  border-color: whitesmoke;
 }
 .modal-icon{
   position: fixed;
   margin-left: 40%;
-  top: 68%
+  top: 65%;
+  font-size: 30px;
+  color: rgb(48, 47, 47);
+  text-shadow: 2px 0px 30px rgb(61, 98, 2, 20%);
 }
-
+.pedigree-modal{
+}
 .pedigree-modal img{
   max-width: 200%;
+  height: 60%;
+  object-fit: cover;
 }
 
 .show-more-container {
