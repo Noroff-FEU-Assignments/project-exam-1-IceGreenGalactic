@@ -25,6 +25,15 @@ export function createModal(imageSrc, altText, index) {
       modal.close();
     }
   });
+
+  const modalIcon = document.createElement("i");
+  modalIcon.className = "fa-solid fa-left-right modal-icon";
+
+  
+  if (imageSrc.includes("pedigree")) {
+    modal.classList.add("pedigree-modal");
+    modal.appendChild(modalIcon);
+  }
 }
 
 export function addImageClickEvent(images) {
