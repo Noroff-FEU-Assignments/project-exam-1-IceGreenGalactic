@@ -29,7 +29,6 @@ export function createModal(imageSrc, altText, index) {
   const modalIcon = document.createElement("i");
   modalIcon.className = "fa-solid fa-left-right modal-icon";
 
-  
   if (imageSrc.includes("pedigree")) {
     modal.classList.add("pedigree-modal");
     modal.appendChild(modalIcon);
