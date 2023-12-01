@@ -145,8 +145,21 @@ function createButtons() {
     }
     buttonContainer.appendChild(buttonElement);
   });
-}
+  const goBackContainer = document.querySelector(".go-back-button");
+  goBackContainer.className = "go-back-container"
+  
+  const goBackButton = document.createElement("button");
+  const backIcon = document.createElement("i");
+  backIcon.className = "fa-solid fa-arrow-left-long";
 
+  goBackButton.textContent = "Go back";
+  goBackButton.className = "go-back-button";
+  goBackButton.addEventListener("click", () => {
+    history.back();
+  });
+  goBackContainer.appendChild(backIcon);
+  goBackContainer.appendChild(goBackButton);
+}
 function createDropdownButton(name, link) {
   const dropdownButton = document.createElement("a");
   dropdownButton.textContent = name;

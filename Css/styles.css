@@ -29,7 +29,7 @@ a:hover {
 header {
   position: relative;
   text-align: center;
-  margin: 0;
+  margin: 0px 0px 40px 0px;
   padding: 0;
 }
 footer {
@@ -93,7 +93,6 @@ footer {
 .dropdown-container {
   left: 50%;
   transform: translate(-50%);
-  
 }
 .dropdown-container,
 .dogs-dropdown-container {
@@ -109,7 +108,8 @@ footer {
 .button-container button:hover .dogs-dropdown-container {
   display: flex;
 }
-.dropdown-container a,.dogs-dropdown-container a {
+.dropdown-container a,
+.dogs-dropdown-container a {
   font-size: 13px;
   padding: 10px;
   color: black;
@@ -118,31 +118,64 @@ footer {
   border-radius: 8px;
   margin: 1px;
 }
-.dropdown-container a:hover,.dogs-dropdown-container a:hover{
+.dropdown-container a:hover,
+.dogs-dropdown-container a:hover {
   background-color: rgb(192, 203, 169);
-
-} 
+}
 .dogs-dropdown-container a {
   padding: 5px 15px;
 }
+
+.go-back-container{
+  align-items: center;
+  position: absolute;
+  left: 15%;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.go-back-button{
+  background-color: transparent;
+  border: none;
+}
+.go-back-container i{
+  font-size: 20px;
+  
+}
+.go-back-container:hover{
+  cursor: pointer;
+  text-shadow: 3px 0px 5px rgb(61, 98, 2, 50%);
+  
+}
+
+.go-back-button:hover {
+  text-decoration: underline;
+  text-shadow: 3px 0px 10px rgb(61, 98, 2, 50%);
+
+}
+
 .up-button {
   position: fixed;
   bottom: -100px;
   right: 10%;
-  background-color: rgb(192, 203, 169);
+  background-color: rgb(192, 203, 169, 50%);
   cursor: pointer;
-  padding: 7px 5px 5px 5px;
+  padding: 12px 15px;
   min-width: 30px;
   z-index: 99;
   font-size: 14px;
   font-weight: 900;
   transition: bottom 0.3s ease;
   color: rgb(57, 57, 57);
+  border-radius: 50%;
 }
 
 .up-button:hover {
   color: black;
-  box-shadow: 0 0 20px rgb(61, 98, 2, 40%);
+  box-shadow: 0 0 20px rgb(61, 98, 2, 20%);
   cursor: pointer;
   font-size: 16px;
 }
@@ -562,7 +595,8 @@ textarea {
     font-size: 56px;
   }
 
-  .dropdown-container a,.dogs-dropdown-container a {
+  .dropdown-container a,
+  .dogs-dropdown-container a {
     font-size: 15px;
   }
   .text-container,
@@ -611,6 +645,7 @@ textarea {
   .hero-container img {
     height: 50vh;
   }
+
   .dogs {
     grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     gap: 2%;
@@ -695,6 +730,18 @@ textarea {
 }
 
 @media (max-width: 699px) {
+  .button-container {
+    margin: 0px 10% 30px 10%;
+  }
+  .go-back-container{
+    left: 10%;
+  }
+  .go-back-container button{
+    font-size: 12px;
+  }
+  .go-back-container i {
+    font-size: 16px;
+  }
   .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -767,12 +814,7 @@ textarea {
     margin: 0px;
   }
 
-  .button-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0px 5% 30px 5%;
-    position: relative;
-  }
+
   .button-container a {
     font-size: 13px;
   }
@@ -832,6 +874,7 @@ textarea {
   }
 }
 @media (max-width: 350px) {
+  
   .single-post div p {
     font-size: 13px;
   }
@@ -839,10 +882,10 @@ textarea {
     margin: 0px 2% 20px 2%;
   }
   .button-container a {
-    font-size: 12px;
+    font-size: 11px;
   }
   .button-container button {
-    padding: 5px;
+    padding: 5px 3px;
   }
   .footer-links {
     margin-left: 10px;
