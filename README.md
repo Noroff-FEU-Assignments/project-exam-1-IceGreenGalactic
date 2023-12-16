@@ -51,9 +51,9 @@ npm open index with "open with live server" or Alt+L Alt+O
 
 ## Contact
 
-This is where you can leave your social links for people to contact you, such as a LinkedIn profile or Twitter link e.g.
 
-[My LinkedIn page](www.linkedin.com/in/kristine-tyrholm-7902172a4)
+
+[My LinkedIn page](https://www.linkedin.com/in/kristine-tyrholm-7902172a4)
 
 ## Acknowledgments
 
